@@ -1,3 +1,92 @@
 \subsection{Flash Sort}
 
-[TO DO]
+\subsubsection{Ý tưởng}
+
+Dựa trên phân phối, khai thác sự phân phối tự nhiên của dữ liệu đầu vào để đạt được độ phức tạp thời gian tuyến tính $O(n)$ cho dữ liệu phân phối đồng đều. Bao gồm 3 phần chính: phân loại, hoán vị và chèn trực tiếp.
+
+\begin{itemize}
+	\item Phân loại
+		\begin{itemize}[label=$\circ$]
+			\item Chia các phần tử thành các lớp dựa trên giá trị của chúng. 
+			\item Sử dụng mối quan hệ tuyến tính giữa giá trị phần tử và vị trí của chúng. 
+			\item Công thức: $class(x) = \dfrac{(m-1)(x-min)}{max-min}$
+		\end{itemize}
+	\item Hoán vị
+		\begin{itemize}[label=$\circ$]
+			\item Di chuyển các phần tử đến vị trí gần đúng của chúng. 
+			\item Tạo ra sự sắp xếp sơ bộ dựa trên phân phối lớp. 
+		\end{itemize}
+	\item Chèn trực tiếp: Sử dụng sắp xếp chèn để sắp xếp lại lần cuối cùng.
+		\begin{itemize}[label=$\circ$]
+			\item Hiệu quả vì các phần tử đã gần như được sắp xếp.  
+			\item Hoạt động trên các phạm vi nhỏ trong các lớp.  
+		\end{itemize}
+\end{itemize}
+
+\subsubsection{Mã giả}
+
+\begin{algorithm}[H]
+	\caption{Flash Sort}
+	\label{flash-sort}
+	
+	\SetKwFunction{FlashSort}{FlashSort}
+	\SetKwFunction{Flash Sort}{Flash Sort}
+	\SetKwProg{Fn}{Function}{:}{}
+	\Fn{\FlashSort {arr\KwSty{[ ]}, n}}{
+		// Tìm giá trị nhỏ nhất và lớn nhất trong mảng a \\
+		$a\_imin = arr[0], \hspace{0.2cm} imax = 0$ \\
+		\For{$i = 0$ \KwTo $n-1$}{
+			\If{$arr[i] < a\_imin$}{
+				$a\_imin = arr[i]$
+			}
+			\If{$arr[i] > arr[imax]$}{
+				$imax = i$
+			}
+		}
+		
+		// Tính số lượng lớp cần phân loại \\
+		$m = max(0.45 \* n, 1)$
+		Khởi tạo mảng L với kích thước m \\
+		$c1 = (m - 1.0) / (arr[imax] - a\_imin)$
+		\For{$i = 0$ \KwTo $n-1$}{
+			$L[c1 * (arr[i] - a\_imin)]++$
+		}
+		\For{$i = 1$ \KwTo $m-1$}{
+			$L[i] += L[i - 1]$
+		}
+		swap($arr[imax]$, $arr[0]$)
+		
+		// Hoán vị \\
+		$nmove = 0, \hspace{0.2cm} j = 0, \hspace{0.2cm} k = m - 1$
+		\While{$nmove < n - 1$}{
+			\While{$j > L[k] - 1$}{
+				$j++$
+				$k = c1 * (arr[j] - a\_imin)$
+			}
+			$flash = a[j]$
+			\While{$j != L[k]$}{
+				$k = c1 * (flash - a\_imin)$
+				swap($flash$, $arr[L[k] - 1]$)
+				$L[k]--, \hspace{0.2cm} nmove++$
+			}
+		}
+		
+		\InsertionSort(a, n) \tcp{Chèn trực tiếp trên phạm vi từng lớp}
+	}
+	\textbf{end function}
+\end{algorithm}
+
+\subsubsection{Ví dụ}
+
+\subsubsection{Độ phức tạp thuật toán}
+
+\begin{itemize}
+	\item Độ phức tạp thời gian
+	\begin{itemize}[label=$\circ$]
+		\item Trường hợp tốt nhất: $O(n)$.
+		\item Trường hợp xấu nhất: $O(n^2)$ khi các phần tử trong mảng phân phối không đều.
+		\item Trường hợp trung bình: $O(n)$. 
+	\end{itemize}
+	
+	\item Độ phức tạp không gian: $O(n)$.
+\end{itemize}
