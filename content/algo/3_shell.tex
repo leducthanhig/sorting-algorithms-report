@@ -1,0 +1,63 @@
+\subsection{Shell Sort}
+
+Là một thuật toán sắp xếp dựa trên sắp xếp chèn (Insertion Sort), được 
+đặt theo tên của người phát minh, Donald Shell. Thuật toán này cải tiến 
+sắp xếp chèn bằng cách cho phép so sánh và hoán đổi các phần tử cách xa 
+nhau trước khi thu hẹp khoảng cách lại. Điều này giúp giảm thiểu số lần 
+hoán đổi và dịch chuyển các phần tử. Đây là một thuật toán không ổn định, 
+phần tử bằng nhau có thể bị đổi chỗ do hoán đổi các nhóm cách xa nhau.
+
+\subsubsection{Ý tưởng}
+
+\begin{enumerate}
+    \item Thay vì sắp xếp toàn bộ danh sách một cách tuần tự, Shell Sort 
+    chia danh sách thành các danh sách con với khoảng cách giữa các phần 
+    tử được xác định bởi một giá trị gọi là khoảng cách (interval).
+    \item Thuật toán sử dụng sắp xếp chèn để sắp xếp các phần tử trong 
+    từng danh sách con này.
+    \item Sau mỗi vòng lặp, khoảng cách được thu nhỏ dần, cuối cùng trở 
+    về 1, lúc này danh sách được sắp xếp hoàn chỉnh.
+\end{enumerate}
+
+\subsubsection{Mã giả}
+
+\begin{algorithm}[H]
+\caption{Shell Sort}
+\SetKwFunction{ShellSort}{ShellSort}
+\SetKwProg{Fn}{Function}{:}{}
+\Fn{\ShellSort{a\KwSty{[]}, n}}{
+    // Bước 1: Khởi tạo khoảng cách \\
+    $gap \gets n / 2$ \\
+    \While{$gap > 0$}{
+        // Bước 2: Sắp xếp chèn với khoảng cách gap \\
+        \For{$i \gets gap$ \KwTo $n - 1$}{
+            $temp \gets a[i]$ \\
+            $j \gets i$ \\
+            // Dịch chuyển các phần tử lớn hơn temp lên một khoảng cách \\
+            \While{$j \geq gap$ \KwSty{and} $a[j - gap] > temp$}{
+                $a[j] \gets a[j - gap]$ \\
+                $j \gets j - gap$ \\
+            }
+            // Đặt temp vào đúng vị trí \\
+            $a[j] \gets temp$ \\
+        }
+        // Bước 3: Giảm khoảng cách \\
+        $gap \gets gap / 2$ \\
+    }
+}
+\textbf{end function}
+\end{algorithm}
+
+\subsubsection{Ví dụ}
+
+\subsubsection{Độ phức tạp thuật toán}
+
+\begin{itemize}
+    \item Độ phức tạp thời gian
+    \begin{itemize}[label=$\circ$]
+        \item Trường hợp tốt nhất: $O\left(n\log{n}\right)$, khi dữ liệu gần như đã được sắp xếp.
+        \item Trường hợp xấu nhất: $O\left(n^2\right)$.
+        \item Trường hợp trung bình: $O\left(n^{3/2}\right)$.
+    \end{itemize}
+    \item Độ phức tạp không gian: $O\left(1\right)$.
+\end{itemize}

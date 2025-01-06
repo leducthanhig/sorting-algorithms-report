@@ -1,0 +1,68 @@
+\documentclass[12pt]{article}
+
+\usepackage{template}
+
+% Disable indentation on new paragraphs
+\setlength{\parindent}{0pt}
+
+% Line spacing 1.5
+\renewcommand{\baselinestretch}{1.5}
+
+% Optional: graphic path
+% \graphicspath{PATH_TO_GRAPHIC_FOLDER}
+
+% To use Times font family, uncomment this row
+% \usepackage{mathptmx}
+
+% To use roman section / subsection, uncomment these rows
+% \renewcommand{\thesection}{\Roman{section}}
+% \renewcommand{\thesubsection}{\thesection.\Roman{subsection}}
+
+% Define course name, report name and report title.
+\newcommand{\coursename}{Thực hành Cấu trúc dữ liệu và giải thuật}
+\newcommand{\reportname}{CÁC THUẬT TOÁN SẮP XẾP}
+\newcommand{\reporttitle}{BÁO CÁO ĐỒ ÁN}
+
+\newcommand{\studentname}{
+    Lê Hải Sơn - 23120162 \\[-0.1cm]
+    Lê Đức Thành - 23120165 \\[-0.1cm]
+    Đặng Ngọc Tiên - 23120171 \\[-0.1cm]
+    Khổng Đức Tiến - 23120175 \\[-0.1cm]
+    Nguyễn Hồ Anh Tuấn - 23120185}
+
+\newcommand{\teachername}{Thầy Trần Hoàng Quân}
+
+% Header
+\lhead{Các thuật toán sắp xếp}
+\rhead{Thực hành Cấu trúc dữ liệu và giải thuật}
+
+% ============ DOCUMENT ============
+\begin{document}
+
+\input{content/cover}
+
+\pagenumbering{arabic}
+\setcounter{page}{2}
+
+\tableofcontents
+\pagebreak
+
+\input{content/info}
+\pagebreak
+
+\input{content/intro}
+\pagebreak
+
+\input{content/algorithm}
+\pagebreak
+
+\input{content/experiment}
+\pagebreak
+
+\input{content/note}
+\pagebreak
+
+% References
+\input{ref/ref}
+
+\end{document}

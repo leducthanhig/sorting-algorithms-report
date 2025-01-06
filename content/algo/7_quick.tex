@@ -1,0 +1,57 @@
+\subsection{Quick Sort}
+
+\subsubsection{Ý tưởng}
+
+Để sắp xếp một đoạn trong mảng, nếu đoạn đó có ít hơn 2 phần tử thì không cần phải làm gì cả. Ngược lại, nếu đoạn đó có từ 2 phần tử trở lên, ta chọn một phần tử ở chính giữa làm “chốt” (pivot), sau đó phân hoạch thành 2 đoạn nhỏ hơn sao cho các phần tử ở đoạn bên trái không lớn hơn pivot và các phần tử ở đoạn bên phải không nhỏ hơn pivot. Tiếp theo, ta áp dụng phương pháp tương tự cho 2 mảng con đó bằng cách gọi đệ quy đến từng mảng.
+
+\subsubsection{Mã giả}
+
+\begin{algorithm}[H]
+\caption{Quick Sort}
+\label{quick-sort}
+
+\SetKwFunction{QuickSort}{QuickSort}
+\SetKwProg{Fn}{Function}{:}{}
+\Fn{\QuickSort {arr\KwSty{[ ]}, left, right}}{
+    $i \gets left, \hspace{0.2cm} j \gets right$ \\
+    $pivot = arr[left + (right - left) / 2]$ \\
+    // Phân hoạch thành 2 đoạn \\
+    \While{$i \leq j$}{ 
+        \While{$arr[i] < pivot$}{
+            $++i$ \\
+        }
+        \While{$arr[j] > pivot$}{
+            $--j$ \\
+        }
+        \If{$i \leq j$}{
+            swap($arr[i]$, $arr[j]$) \\
+            $++i, \hspace{0.2cm} --j$ \\ 
+        }
+    }
+    // Gọi đệ quy cho 2 mảng con \\
+    \If{$i < right$}{
+        \QuickSort{arr, i, right} \\
+    }
+    \If{$j > left$}{
+        \QuickSort{arr, left, j}
+    }
+}
+\textbf{end function}
+\end{algorithm}
+
+\subsubsection{Ví dụ}
+
+\subsubsection{Độ phức tạp}
+
+\begin{itemize}
+    \item Độ phức tạp thời gian
+    \begin{itemize}[label=$\circ$]
+        \item Trường hợp tốt nhất: Giá trị pivot được chọn luôn là trung vị của dãy, do đó nó phân hoạch dãy thành 2 phần bằng nhau. Vì ở mỗi lần chia, kích thước mảng giảm đi một nửa nên khi đó sẽ có $log_2{n}$ mức đệ quy. Ở mỗi mức, thuật toán phải thao tác trên toàn bộ mảng nên có độ phức tạp là $O(n)$. Như vậy, tổng hợp độ phức tạp trong trường hợp này là $O(nlogn)$.
+        
+        \item Trường hợp xấu nhất: Giá trị pivot được chọn luôn là phần tử nhỏ nhất hoặc lớn nhất của dãy, do đó sau mỗi lần phân hoạch, một đoạn không có phần tử nào và đoạn còn lại có $n - 1$ phần tử. Khi đó, thuật toán phải thực hiện  $n - 1$ mức đệ quy, mỗi mức xử lý toàn bộ mảng còn lại với độ phức tạp $O(n)$. Như vậy, tổng hợp độ phức tạp trong trường hợp này là $O(n^2)$.
+        
+        \item Trường hợp trung bình: $O(nlogn)$ 
+    \end{itemize}
+    
+    \item Độ phức tạp không gian: $O(1)$
+\end{itemize}

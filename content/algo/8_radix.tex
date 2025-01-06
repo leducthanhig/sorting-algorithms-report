@@ -1,0 +1,63 @@
+\subsection{Radix Sort}
+
+\subsubsection{Ý tưởng}
+
+Radix Sort sắp xếp các phần tử bằng cách xử lý từng chữ số của các số từ hàng thấp nhất (hàng đơn vị) đến hàng cao nhất. Thuật toán này sử dụng Counting Sort như một bước phụ trợ để sắp xếp theo từng chữ số.
+
+\subsubsection{Mã giả}
+
+\begin{algorithm}[H]
+\caption{Radix Sort}
+\label{radix-sort}
+
+\SetKwFunction{CountingSortByDigit}{CountingSortByDigit}
+\SetKwFunction{RadixSort}{RadixSort}
+\SetKwProg{Fn}{Function}{:}{}
+\Fn{\CountingSortByDigit {arr\KwSty{[ ]}, n, exp}}{
+    $count[10] \gets \{0\}$ \tcp{Mảng đếm cho 10 chữ số}
+    $output[n] \gets \{0\}$ \tcp{Mảng kết quả}
+    \For{$i \gets 0$ \KwTo $n-1$}{
+        $index = (arr[i] \hspace{0.2cm} / \hspace{0.2cm} exp) \% 10$ \\
+        $count[index]++$
+    }
+    \For{$i \gets 1$ \KwTo $9$}{
+        $count[i] += count[i-1]$
+    }
+    \For{$i \gets n-1$ \KwSty{downto} $0$}{
+        $index = (arr[i] \hspace{0.2cm} / \hspace{0.2cm} exp) \% 10$ \\
+        $output[count[index] - 1] = arr[i]$ \\
+        $count[index]--$
+    }
+    \For{$i \gets 0$ \KwTo $n-1$}{
+        $arr[i] = output[i]$
+    }
+}
+\textbf{end function}
+
+\Fn{\RadixSort {arr\KwSty{[ ]}, n}}{
+    $maxVal \gets max(a,n)$ \tcp{Tìm giá trị lớn nhất để biết số chữ số}
+    $exp \gets 1$ \\
+    \While{$maxVal / exp > 0$}{
+        \CountingSortByDigit{arr, n, exp} \\
+        $exp \, *= \, 10$
+    }
+}
+\textbf{end function}
+\end{algorithm}
+
+\subsubsection{Ví dụ}
+
+\subsubsection{Độ phức tạp thuật toán}
+
+Với $k$ và $n$ lần lượt là giá trị lớn nhất trong mảng và số chữ số lớn nhất trong mảng, ta có:
+
+\begin{itemize}
+    \item Độ phức tạp thời gian
+    \begin{itemize}[label=$\circ$]
+        \item Trường hợp tốt nhất: $O(d \times (n+k))$.
+        \item Trường hợp xấu nhất: $O(d \times (n+k))$.
+        \item Trường hợp trung bình: $O(d \times (n+k))$. 
+    \end{itemize}
+    
+    \item Độ phức tạp không gian: $O(n + k)$
+\end{itemize}

@@ -1,0 +1,77 @@
+\subsection{Heap Sort}
+
+\subsubsection{Ý tưởng}
+
+\begin{itemize}
+    \item Xây dựng Max-Heap: Chuyển đổi mảng đầu vào thành một Max-Heap, 
+    sao cho phần tử lớn nhất nằm ở gốc cây.
+    \item Sắp xếp:
+    \begin{enumerate}
+        \item Hoán đổi phần tử gốc (lớn nhất) với phần tử cuối cùng 
+        của mảng.
+        \item Giảm kích thước của heap đi 1 và gọi hàm Heapify để 
+        duy trì tính chất Max-Heap.
+        \item Lặp lại quá trình này cho đến khi heap chỉ còn một phần tử.
+    \end{enumerate}
+\end{itemize}
+
+\subsubsection{Mã giả}
+
+\begin{algorithm}[H]
+\caption{Heap Sort}
+\SetKwFunction{Heapify}{heapify}
+\SetKwFunction{HeapSort}{HeapSort}
+\SetKwProg{Fn}{Function}{:}{}
+\Fn{\Heapify{a\KwSty{[]}, n, i}}{
+    $largest \gets i$ \\
+    $left \gets 2 * i + 1$ \\
+    $right \gets 2 * i + 2$ \\
+    \If{$left < n$ \KwSty{and} $a[left] > a[largest]$}{
+        $largest \gets left$ \\
+    }
+    \If{$right < n$ \KwSty{and} $a[right] > a[largest]$}{
+        $largest \gets right$ \\
+    }
+    \If{$largest \neq i$}{
+        // Đổi chỗ root với phần tử lớn nhất \\
+        swap($a[i]$, $a[largest]$) \\
+        // Đệ quy heapify trên node bị ảnh hưởng \\
+        \Heapify{a, n, largest} \\
+    }
+}
+\textbf{end function}
+
+\Fn{\HeapSort{a\KwSty{[]}, n}}{
+    // Bước 1: Xây dựng Max-Heap từ node trong cuối cùng \\
+    \For{$i \gets n / 2 - 1$ \KwSty{downto} $0$}{
+        \Heapify{a, n, i} \\
+    }
+    // Bước 2: Sắp xếp mảng bằng cách trích xuất các phần tử lớn nhất \\
+    \For{$i \gets n - 1$ \KwSty{downto} $1$}{
+        swap($a[0]$, $a[i]$) \\
+        \Heapify{a, i, 0} \\
+    }
+}
+\textbf{end function}
+\end{algorithm}
+
+\subsubsection{Ví dụ}
+
+\subsubsection{Độ phức tạp thuật toán}
+
+\begin{itemize}
+    \item Độ phức tạp thời gian
+    \begin{itemize}[label=$\circ$]
+        \item Trường hợp tốt nhất: $O(n\log{n})$ vì khi xây dựng heap 
+        và thực hiện thao tác heapify vẫn cần $O(n \log n)$ do tính 
+        chất của heap.
+        \item Trường hợp xấu nhất: $O(n\log{n})$ trong trường hợp tệ 
+        nhất (mảng hoàn toàn ngược hoặc có cấu trúc phức tạp) vẫn duy 
+        trì $O(n \log n)$ vì mọi thao tác chính đều dựa trên việc 
+        heapify từng phần tử.
+        \item Trường hợp trung bình: $O(n\log{n})$ trường hợp trung bình 
+        vẫn cần xây dựng heap và thực hiện n-1 lần thao tác Heapify.
+    \end{itemize}
+    \item Độ phức tạp không gian: $O(1)$ vì Heap Sort là thuật toán 
+    sắp xếp tại chỗ (in-place), không sử dụng bộ nhớ phụ ngoài biến tạm.
+\end{itemize}

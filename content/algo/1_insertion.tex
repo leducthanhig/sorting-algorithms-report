@@ -1,0 +1,93 @@
+\subsection{Insertion Sort}
+
+Là thuật toán sắp xếp dựa trên phương pháp chèn trực tiếp. Thuật toán 
+hoạt động hiệu quả trên mảng nhỏ hoặc mảng gần như đã sắp xếp.
+
+\subsubsection{Ý tưởng}
+
+\begin{itemize}
+    \item Thuật toán này chia mảng thành hai phần: phần đã sắp xếp và 
+    phần chưa sắp xếp.
+    \item Với mỗi phần tử trong mảng chưa sắp xếp, thuật toán chèn nó 
+    vào vị trí thích hợp trong phần đã sắp xếp. 
+\end{itemize}
+
+\subsubsection{Mã giả}
+
+\begin{algorithm}[H]
+\caption{Insertion Sort}
+\SetKwFunction{InsertionSort}{InsertionSort}
+\SetKwProg{Fn}{Function}{:}{}
+\Fn{\InsertionSort{a\KwSty{[]}, n}}{
+    \For{$i \gets 1$ \KwTo $n$}{
+        $key \gets a[i]$ \\
+        $j \gets i - 1$ \\
+        \While{$j \geq 0$ \KwSty{and} $a[j] > key$}{
+            // Di chuyển phần tử lớn hơn sang phải \\
+            $a[j + 1] \gets a[j]$ \\
+            $j \gets j - 1$ \\
+        }
+        // Chèn key vào đúng vị trí \\
+        $a[j + 1] \gets key$
+    }
+}
+\textbf{end function}
+\end{algorithm}
+
+\subsubsection{Ví dụ}
+
+\subsubsection{Độ phức tạp thuật toán}
+
+\begin{itemize}
+    \item Độ phức tạp thời gian
+    \begin{itemize}[label=$\circ$]
+        \item Trường hợp tốt nhất: $O(n)$ khi mảng đã được sắp xếp.
+        \item Trường hợp xấu nhất: $O\left(n^2\right)$ khi mảng sắp xếp 
+        ngược, cần dịch chuyển toàn bộ phần tử cho mỗi lần chèn.
+        \item Trường hợp trung bình: $O\left(n^2\right)$ do phải thực 
+        hiện n lần chèn và mỗi lần chèn có thể phải dịch chuyển trung 
+        bình n/2 phần tử.
+    \end{itemize}
+    \item Độ phức tạp không gian: $O\left(1\right)$ vì là thuật toán 
+    sắp xếp tại chỗ (in-place), không sử dụng bộ nhớ phụ ngoài biến tạm.
+\end{itemize}
+
+\subsubsection{Các cải tiến của thuật toán}
+
+\begin{enumerate}
+    \item Binary Insertion Sort
+    \begin{itemize}
+        \item Ý tưởng: Thay vì sử dụng tìm kiếm tuyến tính để tìm vị trí 
+        chèn phù hợp trong mảng đã sắp xếp thì ta có thể sử dụng thuật 
+        toán làm việc được trên mảng đã sắp xếp để có thể tối ưu việc 
+        tìm vị trí phù hợp để chèn. Đó chính là Binary Search để có 
+        thể tìm kiếm tốt hơn với độ phức tạp của thuật toán là 
+        $O\left(\log{n}\right)$.
+        \item Ví dụ: Trong mảng $A=\left[1,4,5,10,15,20,9,21\right]$. 
+        Khi xét vị trí $i=7$, ta cần tìm vị trí phụ hợp để chèn 9 
+        vào thì có thể dùng binary search trong mảng đã sắp xếp trước 
+        đó $\left[1,4,5,10,15,20\right]$ để tìm vị trí thích hợp.
+    \end{itemize}
+    \item Library Sort (còn gọi là gapped insertion sort)
+    \begin{itemize}
+        \item Ý tưởng: Thuật toán này có thể sử dụng các khoảng trống 
+        (gaps) trong mảng để chèn phần tử, giúp hạn chế việc dịch 
+        chuyển quá nhiều khi chèn giúp tối ưu trong việc xử lí khi 
+        mảng có rất nhiều phần tử. Khi khoảng trống hết, mảng sẽ được 
+        mở rộng và phân bổ lại khoảng trống mới. Với độ phức tạp thời 
+        gian trung bình của Library Sort là $O\left(n\log{n}\right)$.
+        \item Ví dụ: Với mảng $A=\left[3,4,5,8,1,2\right]$. Sau khi 
+        tạo mảng với khoảng trống và chèn 3, 4, 5, 8 thì mảng 
+        như sau $\left[3,\_,4,5,8\right]$.
+        \begin{itemize}[label=$\circ$]
+            \item Như vậy, khi chèn 1 vào đúng vị trí thì sẽ sắp xếp 
+            lại và điền vào khoảng trống $\left[1,3,4,5,8\right]$.
+            \item Tiếp theo, chèn 2, mảng không còn vị trí nào sau 
+            phần tử 3 thì khi chèn 2 thì lúc này khoảng trống sẽ hết 
+            thì mảng sẽ được mở rộng và phân bổ lại khoảng trống mới. 
+            Mảng lúc này sẽ là $\left[1,\_,\_,3,4,5,8\right]$ khi đó 
+            khi chèn 2 vào thì sẽ sử dụng khoảng trống mới mở rộng 
+            $\left[1,2,\_,3,4,5,8\right]$.
+        \end{itemize}
+    \end{itemize}
+\end{enumerate}
