@@ -1,3 +1,64 @@
 \subsection{Shaker Sort}
 
-[TO DO]
+\subsubsection{Ý tưởng}
+
+Shaker Sort là một biến thể của Bubble Sort, trong đó việc duyệt mảng được thực hiện theo cả hai chiều (trái sang phải và ngược lại). Điều này giúp giảm số lần duyệt trong trường hợp các phần tử lớn đã nằm ở cuối mảng.
+
+\subsubsection{Mã giả}
+
+\begin{algorithm}[H]
+	\caption{Shaker Sort}
+	\label{shaker-sort}
+	
+	\SetKwFunction{ShakerSort}{ShakerSort}
+	\SetKwFunction{Shaker Sort}{Shaker Sort}
+	\SetKwProg{Fn}{Function}{:}{}
+	\Fn{\ShakerSort {arr\KwSty{[ ]}, n}}{
+		$left \gets 0$ \\
+		$right \gets n - 1$  \\
+		
+		\While{$left < right$}{
+			\For{$i = left$ \KwTo $right - 1$}{
+				\If{$arr[i] > arr[i+1]$}{
+					swap($arr[i]$, $arr[i+1]$)
+				}
+			}
+			$right--$ \\
+			\For{$i = right$ \KwSty{downto} $left$}{
+				\If{$arr[i] > arr[i+1]$}{
+					swap($arr[i]$, $arr[i+1]$)
+				}
+			}
+			$left++$
+		}
+	}
+	\textbf{end function}
+\end{algorithm}
+
+\subsubsection{Ví dụ}
+
+\subsubsection{Độ phức tạp thuật toán}
+
+\begin{itemize}
+	\item Độ phức tạp thời gian
+	\begin{itemize}[label=$\circ$]
+		\item Trường hợp tốt nhất: $O(n)$ khi mảng đã được sắp xếp.
+		\item Trường hợp xấu nhất: $O(n^2)$.
+		\item Trường hợp trung bình: $O(n^2)$. 
+	\end{itemize}
+	
+	\item Độ phức tạp không gian: $O(1)$.
+\end{itemize}
+
+\subsubsection{Các cải tiến của thuật toán}
+
+\begin{itemize}
+	
+	\item Dừng sớm khi mảng đã sắp xếp \\
+	Sử dụng một cờ hiệu (flag) để kiểm tra xem có xảy ra hoán đổi trong một lượt duyệt hay không, nếu không có hoán đổi, kết thúc sớm thay vì tiếp tục duyệt. Điều này giúp giảm số lần duyệt trong trường hợp mảng gần như đã sắp xếp.
+	\item Giảm số lần so sánh \\
+	Thay vì luôn duyệt đến cuối mảng, có thể ghi lại vị trí của lần hoán đổi cuối cùng. Phần sau vị trí này đã được sắp xếp và không cần kiểm tra nữa.
+	\item Kết hợp với Binary Search \\
+	Nếu mảng đầu vào gần như đã sắp xếp, có thể kết hợp Shaker Sort với Binary Search để tìm vị trí chính xác cho các phần tử bị sai vị trí, giảm số lần hoán đổi.
+	
+\end{itemize}

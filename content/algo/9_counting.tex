@@ -1,3 +1,55 @@
 \subsection{Counting Sort}
 
-[TO DO]
+\subsubsection{Ý tưởng}
+
+Counting Sort không so sánh các phần tử mà dựa trên việc đếm số lần xuất hiện của từng giá trị. Thuật toán tạo một mảng đếm (counting array) để lưu số lần xuất hiện của các giá trị và sử dụng mảng này để xây dựng mảng đã sắp xếp. 
+
+\subsubsection{Mã giả}
+
+\begin{algorithm}[H]
+	\caption{Counting Sort}
+	\label{counting-sort}
+	
+	\SetKwFunction{CountingSort}{CountingSort}
+	\SetKwFunction{Counting Sort}{Counting Sort}
+	\SetKwProg{Fn}{Function}{:}{}
+	\Fn{\CountingSort {arr\KwSty{[ ]}, n, k}}{
+		$count[10] \gets \{0\}$ \tcp*{Mảng đếm cho với kích thước k}
+		$output[n] \gets \{0\}$ \tcp*{Mảng kết quả}
+		
+		\For{$i \gets 0$ \KwTo $n-1$}{ 
+			$count[arr[i]]++$ \tcp*{Đếm số lần xuất hiện của mỗi phần tử}
+		}
+		
+		\For{$i \gets 1$ \KwTo $k-1$}{
+			$count[i] += count[i-1]$ \tcp*{Tính tổng tích lũy}
+		}
+		
+		\For{$i \gets n-1$ \KwSty{downto} $0$}{
+			$output[count[arr[i]] - 1] = arr[i]$ \tcp*{Xây dựng mảng kết quả} 
+			$count[arr[i]]--$
+		}
+		
+		\For{$i \gets 0$ \KwTo $n-1$}{
+			$arr[i] = output[i]$ \tcp*{Sao chép mảng kết quả vào mảng ban đầu}
+		}
+	}
+	\textbf{end function}
+\end{algorithm}
+
+\subsubsection{Ví dụ}
+
+\subsubsection{Độ phức tạp thuật toán}
+
+Với $k$ là giá trị lớn nhất trong mảng, ta có:
+
+\begin{itemize}
+	\item Độ phức tạp thời gian
+	\begin{itemize}[label=$\circ$]
+		\item Trường hợp tốt nhất: $O(n+k)$.
+		\item Trường hợp xấu nhất: $O(n+k)$.
+		\item Trường hợp trung bình: $O(n+k)$. 
+	\end{itemize}
+	
+	\item Độ phức tạp không gian: $O(n + k)$.
+\end{itemize}
