@@ -28,12 +28,10 @@ Dựa trên phân phối, khai thác sự phân phối tự nhiên của dữ li
 \begin{algorithm}[H]
 	\caption{Flash Sort}
 	\label{flash-sort}
-	
 	\SetKwFunction{FlashSort}{FlashSort}
-	\SetKwFunction{Flash Sort}{Flash Sort}
 	\SetKwProg{Fn}{Function}{:}{}
 	\Fn{\FlashSort {arr\KwSty{[ ]}, n}}{
-		// Tìm giá trị nhỏ nhất và lớn nhất trong mảng a \\
+		// Tìm giá trị nhỏ nhất và lớn nhất trong mảng $arr$ \\
 		$a\_imin = arr[0], \hspace{0.2cm} imax = 0$ \\
 		\For{$i = 0$ \KwTo $n-1$}{
 			\If{$arr[i] < a\_imin$}{
@@ -43,34 +41,47 @@ Dựa trên phân phối, khai thác sự phân phối tự nhiên của dữ li
 				$imax = i$
 			}
 		}
-		
 		// Tính số lượng lớp cần phân loại \\
-		$m = max(0.45 \* n, 1)$
-		Khởi tạo mảng L với kích thước m \\
-		$c1 = (m - 1.0) / (arr[imax] - a\_imin)$
-		\For{$i = 0$ \KwTo $n-1$}{
+		$m = max(0.45 * n, 1)$ \\
+		Khởi tạo mảng $L$ với kích thước $m$ \\
+		$c1 = (m - 1.0) / (arr[imax] - a\_imin)$ \\
+			\For{$i = 0$ \KwTo $n-1$}{
 			$L[c1 * (arr[i] - a\_imin)]++$
 		}
 		\For{$i = 1$ \KwTo $m-1$}{
 			$L[i] += L[i - 1]$
 		}
-		swap($arr[imax]$, $arr[0]$)
-		
+		swap($arr[imax]$, $arr[0]$) \\
 		// Hoán vị \\
-		$nmove = 0, \hspace{0.2cm} j = 0, \hspace{0.2cm} k = m - 1$
+		$nmove = 0, \hspace{0.2cm} j = 0, \hspace{0.2cm} k = m - 1$ \\
+	}
+\end{algorithm}
+
+%----------------------------------------------------------------------
+
+\begingroup
+\renewcommand{\thealgocf}{} % Loại bỏ số thứ tự
+\setlength{\algotitleheightrule}{0pt} % Loại bỏ dòng kẻ trên tiêu đề
+\setlength{\interspacetitleruled}{0pt} % Không khoảng cách giữa tiêu đề và đường kẻ
+\setlength{\interspacealgoruled}{0pt} % Không khoảng cách giữa đường kẻ và nội dung
+
+\begin{algorithm}[H]
+	\setcounter{AlgoLine}{24} % Tiếp tục số dòng từ phần trước
+	\SetInd{1em}{1em} % Đặt khoảng thụt lề tương tự phần 1
+	\SetKwProg{Fn}{}{}{} % Không hiển thị "Function" ở phần 2
+	\Fn{}{% Duy trì khối thụt lề và vline
 		\While{$nmove < n - 1$}{
 			\While{$j > L[k] - 1$}{
-				$j++$
+				$j++$ \\
 				$k = c1 * (arr[j] - a\_imin)$
 			}
-			$flash = a[j]$
+			$flash = arr[j]$ \\
 			\While{$j != L[k]$}{
-				$k = c1 * (flash - a\_imin)$
-				swap($flash$, $arr[L[k] - 1]$)
+				$k = c1 * (flash - a\_imin)$ \\
+				swap($flash$, $arr[L[k] - 1]$) \\
 				$L[k]--, \hspace{0.2cm} nmove++$
 			}
 		}
-		
 		\InsertionSort(a, n) \tcp{Chèn trực tiếp trên phạm vi từng lớp}
 	}
 	\textbf{end function}
