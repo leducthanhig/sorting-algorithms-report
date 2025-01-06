@@ -1,7 +1,6 @@
 \subsection{Insertion Sort}
 
-Là thuật toán sắp xếp dựa trên phương pháp chèn trực tiếp. Thuật toán 
-hoạt động hiệu quả trên mảng nhỏ hoặc mảng gần như đã sắp xếp.
+%Là thuật toán sắp xếp dựa trên phương pháp chèn trực tiếp. Thuật toán hoạt động hiệu quả trên mảng nhỏ hoặc mảng gần như đã sắp xếp.
 
 \subsubsection{Ý tưởng}
 
@@ -35,6 +34,100 @@ hoạt động hiệu quả trên mảng nhỏ hoặc mảng gần như đã s�
 \end{algorithm}
 
 \subsubsection{Ví dụ}
+
+\begin{tikzpicture}[node distance=0cm, font=\sffamily, every node/.style={minimum width=1cm, minimum height=1cm, outer sep=0pt, anchor = west}, line join=miter, line cap=rect]
+	
+	% Trạng thái ban đầu
+	\node[font=\rmfamily] at (0, 0) {Giả sử ta có mảng ban đầu với $n=5$ như sau:};
+	\node[draw, fill=white] at (9, 0) {8};
+	\node[draw, fill=white] at (10, 0) {6};
+	\node[draw, fill=white] at (11, 0) {4};
+	\node[draw, fill=white] at (12, 0) {5};
+	\node[draw, fill=white] at (13, 0) {23};
+	
+	% Trạng thái 1
+	\node[font=\rmfamily] at (0, -2) {Bước 1:};
+	\node[draw, fill=white] at (2, -2) {8};
+	\node[draw, fill=yellow] at (3, -2) {6};
+	\node[draw, fill=white] at (4, -2) {4};
+	\node[draw, fill=white] at (5, -2) {5};
+	\node[draw, fill=white] at (6, -2) {23};
+	\draw[line width=0.7mm, shorten <=0pt] (3.5, -1.5) -- (3.5, -1);
+	\draw[line width=0.7mm] (3.5, -1) -- (2, -1);
+	\draw[->, line width=0.7mm, shorten >=0pt] (2, -1) -- (2,-1.5);
+	
+	\draw[->, line width=0.7mm] (8, -2) -- (9.5, -2);
+	
+	\node[draw, fill=blue] at (10.5, -2) {6};
+	\node[draw, fill=blue] at (11.5, -2) {8};
+	\node[draw, fill=white] at (12.5, -2) {4};
+	\node[draw, fill=white] at (13.5, -2) {5};
+	\node[draw, fill=white] at (14.5, -2) {23};
+	
+	% Trạng thái 2
+	\node[font=\rmfamily] at (0, -4) {Bước 2:};
+	\node[draw, fill=white] at (2, -4) {6};
+	\node[draw, fill=white] at (3, -4) {8};
+	\node[draw, fill=yellow] at (4, -4) {4};
+	\node[draw, fill=white] at (5, -4) {5};
+	\node[draw, fill=white] at (6, -4) {23};
+	\draw[line width=0.7mm, shorten <=0pt] (4.5, -3.5) -- (4.5, -3);
+	\draw[line width=0.7mm] (4.5, -3) -- (2, -3);
+	\draw[->, line width=0.7mm, shorten >=0pt] (2, -3) -- (2,-3.5);
+	
+	\draw[->, line width=0.7mm] (8, -4) -- (9.5, -4);
+	
+	\node[draw, fill=blue] at (10.5, -4) {4};
+	\node[draw, fill=blue] at (11.5, -4) {6};
+	\node[draw, fill=blue] at (12.5, -4) {8};
+	\node[draw, fill=white] at (13.5, -4) {5};
+	\node[draw, fill=white] at (14.5, -4) {23};
+		
+\end{tikzpicture}
+
+\newpage
+
+\begin{tikzpicture}[node distance=0cm, font=\sffamily, every node/.style={minimum width=1cm, minimum height=1cm, outer sep=0pt, anchor = west}, line join=miter, line cap=rect]
+	
+	% Trạng thái 3
+	\node[font=\rmfamily] at (0, 0) {Bước 3:};
+	\node[draw, fill=white] at (2, 0) {4};
+	\node[draw, fill=white] at (3, 0) {6};
+	\node[draw, fill=white] at (4, 0) {8};
+	\node[draw, fill=yellow] at (5, 0) {5};
+	\node[draw, fill=white] at (6, 0) {23};
+	\draw[line width=0.7mm, shorten <=0pt] (5.5, 0.5) -- (5.5, 1);
+	\draw[line width=0.7mm] (5.5, 1) -- (3, 1);
+	\draw[->, line width=0.7mm, shorten >=0pt] (3, 1) -- (3,0.5);
+	
+	\draw[->, line width=0.7mm] (8, 0) -- (9.5, 0);
+	
+	\node[draw, fill=blue] at (10.5, 0) {4};
+	\node[draw, fill=blue] at (11.5, 0) {5};
+	\node[draw, fill=blue] at (12.5, 0) {6};
+	\node[draw, fill=blue] at (13.5, 0) {8};
+	\node[draw, fill=white] at (14.5, 0) {23};
+	
+	% Trạng thái 4
+	\node[font=\rmfamily] at (0, -2) {Bước 4:};
+	\node[draw, fill=white] at (2, -2) {4};
+	\node[draw, fill=white] at (3, -2) {5};
+	\node[draw, fill=white] at (4, -2) {6};
+	\node[draw, fill=white] at (5, -2) {8};
+	\node[draw, fill=yellow] at (6, -2) {23};
+	\draw[line width=0.7mm, shorten <=0pt] (6.5, -1.5) -- (6.5, -1);
+	\draw[line width=0.7mm] (6.5, -1) -- (6, -1);
+	\draw[->, line width=0.7mm, shorten >=0pt] (6, -1) -- (6,-1.5);
+	
+	\draw[->, line width=0.7mm] (8, -2) -- (9.5, -2);
+	
+	\node[draw, fill=blue] at (10.5, -2) {6};
+	\node[draw, fill=blue] at (11.5, -2) {8};
+	\node[draw, fill=blue] at (12.5, -2) {4};
+	\node[draw, fill=blue] at (13.5, -2) {5};
+	\node[draw, fill=blue] at (14.5, -2) {23};
+	
+\end{tikzpicture}
 
 \subsubsection{Độ phức tạp thuật toán}
 
