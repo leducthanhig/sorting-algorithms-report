@@ -56,7 +56,7 @@ bị thay đổi do hoán vị.
 
 Giả sử ta có mảng ban đầu với $n=5$ như sau:
 \begin{center}
-    \begin{tikzpicture}
+    \begin{tikzpicture}[node distance=0cm, font=\sffamily, every node/.style={minimum width=1cm, minimum height=1cm, outer sep=0pt, anchor = west}, line join=miter, line cap=rect]
         \node[draw, fill=white] at (9, 0) {6};
         \node[draw, fill=white] at (10, 0) {1};
         \node[draw, fill=white] at (11, 0) {4};
@@ -70,7 +70,7 @@ tìm phần tử nhỏ nhất trong phần mảng chưa sắp xếp $(1)$ và
 hoán vị với phần tử hiện tại $(6)$.
 
 \begin{center}
-    \begin{tikzpicture}
+    \begin{tikzpicture}[node distance=0cm, font=\sffamily, every node/.style={minimum width=1cm, minimum height=1cm, outer sep=0pt, anchor = west}, line join=miter, line cap=rect]
         \node[draw, fill=yellow] at (1, -3.5) {6};
         \node[draw, fill=yellow] at (2, -3.5) {1};
         \node[draw, fill=white] at (3, -3.5) {4};
@@ -95,7 +95,7 @@ tìm phần tử nhỏ nhất trong phần mảng chưa sắp xếp $(4)$ và
 hoán vị với phần tử hiện tại $(6)$.
 
 \begin{center}
-    \begin{tikzpicture}
+    \begin{tikzpicture}[node distance=0cm, font=\sffamily, every node/.style={minimum width=1cm, minimum height=1cm, outer sep=0pt, anchor = west}, line join=miter, line cap=rect]
         \node[draw, fill=blue] at (1, -7) {1};
         \node[draw, fill=yellow] at (2, -7) {6};
         \node[draw, fill=yellow] at (3, -7) {4};
@@ -119,7 +119,7 @@ Do phần còn lại của mảng đã theo thứ tự nên các bước tiếp 
 không có sự thay đổi và cuối cùng ta được mảng đã sắp xếp:
 
 \begin{center}
-    \begin{tikzpicture}
+    \begin{tikzpicture}[node distance=0cm, font=\sffamily, every node/.style={minimum width=1cm, minimum height=1cm, outer sep=0pt, anchor = west}, line join=miter, line cap=rect]
         \node[draw, fill=blue] at (0, 0) {1};
         \node[draw, fill=blue] at (1, 0) {4};
         \node[draw, fill=blue] at (2, 0) {6};

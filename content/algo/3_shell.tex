@@ -52,7 +52,7 @@ phần tử bằng nhau có thể bị đổi chỗ do hoán đổi các nhóm c
 
 Giả sử ta có mảng ban đầu với $n=5$ như sau:
 \begin{center}
-    \begin{tikzpicture}
+    \begin{tikzpicture}[node distance=0cm, font=\sffamily, every node/.style={minimum width=1cm, minimum height=1cm, outer sep=0pt, anchor = west}, line join=miter, line cap=rect]
         \node[draw, fill=white] at (9, 0) {9};
         \node[draw, fill=white] at (10, 0) {8};
         \node[draw, fill=white] at (11, 0) {3};
@@ -65,7 +65,7 @@ Bắt đầu với $gap = 2$, thực hiện sắp xếp chèn với khoảng cá
 cho từng phần tử từ vị trí $gap$ đến hết bên phải mảng.
 
 \begin{center}
-    \begin{tikzpicture}
+    \begin{tikzpicture}[node distance=0cm, font=\sffamily, every node/.style={minimum width=1cm, minimum height=1cm, outer sep=0pt, anchor = west}, line join=miter, line cap=rect]
         % Substep 1
         \node[draw, fill=yellow] at (1, -3.5) {9};
         \node[draw, fill=white] at (2, -3.5) {8};
@@ -125,7 +125,7 @@ cho từng phần tử từ vị trí $gap$ đến hết bên phải mảng.
 Thực hiện tương tự với $gap = 1$, ta thu được mảng đã sắp xếp:
 
 \begin{center}
-    \begin{tikzpicture}
+    \begin{tikzpicture}[node distance=0cm, font=\sffamily, every node/.style={minimum width=1cm, minimum height=1cm, outer sep=0pt, anchor = west}, line join=miter, line cap=rect]
         \node[draw, fill=blue] at (9, 0) {3};
         \node[draw, fill=blue] at (10, 0) {5};
         \node[draw, fill=blue] at (11, 0) {7};

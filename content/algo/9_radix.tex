@@ -1,10 +1,10 @@
-\subsection{Radix Sort}
+% \subsection{Radix Sort}
 
-\subsubsection{Ý tưởng}
+% \subsubsection{Ý tưởng}
 
-Radix Sort sắp xếp các phần tử bằng cách xử lý từng chữ số của các số từ hàng thấp nhất (hàng đơn vị) đến hàng cao nhất. Thuật toán này sử dụng Counting Sort như một bước phụ trợ để sắp xếp theo từng chữ số.
+% Radix Sort sắp xếp các phần tử bằng cách xử lý từng chữ số của các số từ hàng thấp nhất (hàng đơn vị) đến hàng cao nhất. Thuật toán này sử dụng Counting Sort như một bước phụ trợ để sắp xếp theo từng chữ số.
 
-\subsubsection{Mã giả}
+% \subsubsection{Mã giả}
 
 \begin{algorithm}[H]
 \caption{Radix Sort}
@@ -47,31 +47,70 @@ Radix Sort sắp xếp các phần tử bằng cách xử lý từng chữ số 
 
 \subsubsection{Ví dụ}
 
-\subsubsection{Độ phức tạp thuật toán}
+Giả sử ta có mảng ban đầu với $n=7$ như sau:
+\begin{center}
+    \begin{tikzpicture}[node distance=0cm, font=\sffamily, every node/.style={minimum width=1cm, minimum height=1cm, outer sep=0pt, anchor = west}, line join=miter, line cap=rect]
+        \node[draw, fill=white] at (9, 0) {170};
+        \node[draw, fill=white] at (10, 0) {45};
+        \node[draw, fill=white] at (11, 0) {75};
+        \node[draw, fill=white] at (12, 0) {90};
+        \node[draw, fill=white] at (13, 0) {802};
+        \node[draw, fill=white] at (14, 0) {24};
+        \node[draw, fill=white] at (15, 0) {2};
+        \node[draw, fill=white] at (16, 0) {66};
+    \end{tikzpicture}
+\end{center}
 
-\begin{itemize}
-    \item Độ phức tạp thời gian
-    \begin{itemize}[label=$\circ$]
-        \item Trường hợp tốt nhất: $O\left(d\times\left(n+k\right)\right)$. 
-        Khi $n$ lớn và $k$ nhỏ. 
-        \item Trường hợp xấu nhất: $O\left(d\times\left(n+k\right)\right)$. 
-        Trường hợp xấu nhất xảy ra khi giá trị lớn nhất trong mảng có nhiều 
-        chữ số $(d)$ lớn và phạm vi giá trị của mỗi chữ số $(k)$ lớn. Tuy nhiên, 
-        hiệu suất vẫn được đảm bảo bởi tính ổn định của Counting Sort.
-        \item Trường hợp trung bình: $O\left(d\times\left(n+k\right)\right)$. 
-        Trường hợp này xảy ra khi các giá trị trong mảng được phân bố ngẫu nhiên. 
-        Radix Sort vẫn thực hiện d lần Counting Sort với hiệu suất ổn định.
-    \end{itemize}
+% \textbf{Bước 1:} Bắt đầu từ phần tử đầu tiên tại vị trí $i=0$, 
+% tìm phần tử nhỏ nhất trong phần mảng chưa sắp xếp $(1)$ và 
+% hoán vị với phần tử hiện tại $(6)$.
+
+% \begin{center}
+%     \begin{tikzpicture}[node distance=0cm, font=\sffamily, every node/.style={minimum width=1cm, minimum height=1cm, outer sep=0pt, anchor = west}, line join=miter, line cap=rect]
+%         \node[draw, fill=yellow] at (1, -3.5) {6};
+%         \node[draw, fill=yellow] at (2, -3.5) {1};
+%         \node[draw, fill=white] at (3, -3.5) {4};
+%         \node[draw, fill=white] at (4, -3.5) {8};
+%         \node[draw, fill=white] at (5, -3.5) {23};
+%         \draw[<-, line width=0.6mm, shorten <=0pt] (2.5, -3) -- (2.5, -2.5);
+%         \draw[line width=0.6mm] (2.5, -2.5) -- (1.5, -2.5);
+%         \draw[->, line width=0.6mm, shorten >=0pt] (1.5, -2.5) -- (1.5, -3);
+        
+%         \draw[->, line width=0.6mm] (7, -3.5) -- (8, -3.5);
+        
+%         \node[draw, fill=blue] at (9, -3.5) {1};
+%         \node[draw, fill=white] at (10, -3.5) {6};
+%         \node[draw, fill=white] at (11, -3.5) {4};
+%         \node[draw, fill=white] at (12, -3.5) {8};
+%         \node[draw, fill=white] at (13, -3.5) {23};
+%     \end{tikzpicture}
+% \end{center}
+
+% \subsubsection{Độ phức tạp thuật toán}
+
+% \begin{itemize}
+%     \item Độ phức tạp thời gian
+%     \begin{itemize}[label=$\circ$]
+%         \item Trường hợp tốt nhất: $O\left(d\times\left(n+k\right)\right)$. 
+%         Khi $n$ lớn và $k$ nhỏ. 
+%         \item Trường hợp xấu nhất: $O\left(d\times\left(n+k\right)\right)$. 
+%         Trường hợp xấu nhất xảy ra khi giá trị lớn nhất trong mảng có nhiều 
+%         chữ số $(d)$ lớn và phạm vi giá trị của mỗi chữ số $(k)$ lớn. Tuy nhiên, 
+%         hiệu suất vẫn được đảm bảo bởi tính ổn định của Counting Sort.
+%         \item Trường hợp trung bình: $O\left(d\times\left(n+k\right)\right)$. 
+%         Trường hợp này xảy ra khi các giá trị trong mảng được phân bố ngẫu nhiên. 
+%         Radix Sort vẫn thực hiện d lần Counting Sort với hiệu suất ổn định.
+%     \end{itemize}
     
-    \item Độ phức tạp không gian: $O\left(n+k\right)$. Vì Radix Sort 
-    sử dụng không gian phụ từ Counting Sort.
+%     \item Độ phức tạp không gian: $O\left(n+k\right)$. Vì Radix Sort 
+%     sử dụng không gian phụ từ Counting Sort.
 
-\end{itemize}
+% \end{itemize}
 
-Trong đó:
+% Trong đó:
 
-\begin{itemize}[label=$\circ$]
-    \item d: Số lượng chữ số của giá trị lớn nhất có trong mảng.
-    \item k: Phạm vi giá trị của mỗi chữ số, phụ thuộc vào hệ cơ số 
-    mà Radix Sort sử dụng (ví dụ: với hệ thập phân, $k=10$).
-\end{itemize}
+% \begin{itemize}[label=$\circ$]
+%     \item d: Số lượng chữ số của giá trị lớn nhất có trong mảng.
+%     \item k: Phạm vi giá trị của mỗi chữ số, phụ thuộc vào hệ cơ số 
+%     mà Radix Sort sử dụng (ví dụ: với hệ thập phân, $k=10$).
+% \end{itemize}

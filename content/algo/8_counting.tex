@@ -44,7 +44,7 @@ Counting Sort không so sánh các phần tử mà dựa trên việc đếm s�
 
 Giả sử ta có mảng ban đầu với $n=7$ như sau:
 \begin{center}
-    \begin{tikzpicture}
+    \begin{tikzpicture}[node distance=0cm, font=\sffamily, every node/.style={minimum width=1cm, minimum height=1cm, outer sep=0pt, anchor = west}, line join=miter, line cap=rect]
         \node[draw, fill=white] at (1, 0) {4};
         \node[draw, fill=white] at (2, 0) {2};
         \node[draw, fill=white] at (3, 0) {2};
@@ -59,7 +59,7 @@ Giả sử ta có mảng ban đầu với $n=7$ như sau:
 = 8 - 1 + 1 = 8$. Khởi tạo mảng đếm $count$ có kích thước $k$:
 
 \begin{center}
-    \begin{tikzpicture}
+    \begin{tikzpicture}[node distance=0cm, font=\sffamily, every node/.style={minimum width=1cm, minimum height=1cm, outer sep=0pt, anchor = west}, line join=miter, line cap=rect]
         \node[font=\rmfamily] at (2, 0) {0};
         \node[font=\rmfamily] at (3, 0) {1};
         \node[font=\rmfamily] at (4, 0) {2};
@@ -85,7 +85,7 @@ và lưu vào mảng đếm $(count)$ tại vị trí tương ứng với giá t
 đó trừ đi giá trị nhỏ nhất trong mảng đầu vào. Khi đó sẽ thu được mảng:
 
 \begin{center}
-    \begin{tikzpicture}
+    \begin{tikzpicture}[node distance=0cm, font=\sffamily, every node/.style={minimum width=1cm, minimum height=1cm, outer sep=0pt, anchor = west}, line join=miter, line cap=rect]
         \node[font=\rmfamily] at (2, 0) {0};
         \node[font=\rmfamily] at (3, 0) {1};
         \node[font=\rmfamily] at (4, 0) {2};
@@ -109,7 +109,7 @@ và lưu vào mảng đếm $(count)$ tại vị trí tương ứng với giá t
 \textbf{Bước 3:} Tính tổng tích lũy cho mảng đếm $(count)$ sẽ thu được mảng sau:
 
 \begin{center}
-    \begin{tikzpicture}
+    \begin{tikzpicture}[node distance=0cm, font=\sffamily, every node/.style={minimum width=1cm, minimum height=1cm, outer sep=0pt, anchor = west}, line join=miter, line cap=rect]
         \node[font=\rmfamily] at (2, 0) {0};
         \node[font=\rmfamily] at (3, 0) {1};
         \node[font=\rmfamily] at (4, 0) {2};
@@ -135,7 +135,7 @@ $output[count[intput[i] - min] - 1] = intput[i]$ và giảm giá trị mảng đ
 tại vị trí vừa truy cập. Khi đó ta được mảng đã sắp xếp:
 
 \begin{center}
-    \begin{tikzpicture}
+    \begin{tikzpicture}[node distance=0cm, font=\sffamily, every node/.style={minimum width=1cm, minimum height=1cm, outer sep=0pt, anchor = west}, line join=miter, line cap=rect]
         \node[draw, fill=blue] at (1, 0) {1};
         \node[draw, fill=blue] at (2, 0) {2};
         \node[draw, fill=blue] at (3, 0) {2};
