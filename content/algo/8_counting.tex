@@ -7,34 +7,37 @@ Counting Sort không so sánh các phần tử mà dựa trên việc đếm s�
 \subsubsection{Mã giả}
 
 \begin{algorithm}[H]
-	\caption{Counting Sort}
-	\label{counting-sort}
-	
-	\SetKwFunction{CountingSort}{CountingSort}
-	\SetKwFunction{Counting Sort}{Counting Sort}
-	\SetKwProg{Fn}{Function}{:}{}
-	\Fn{\CountingSort {arr\KwSty{[ ]}, n, k}}{
-		$count[10] \gets \{0\}$ \tcp*{Mảng đếm cho với kích thước k}
-		$output[n] \gets \{0\}$ \tcp*{Mảng kết quả}
-		
-		\For{$i \gets 0$ \KwTo $n-1$}{ 
-			$count[arr[i]]++$ \tcp*{Đếm số lần xuất hiện của mỗi phần tử}
-		}
-		
-		\For{$i \gets 1$ \KwTo $k-1$}{
-			$count[i] += count[i-1]$ \tcp*{Tính tổng tích lũy}
-		}
-		
-		\For{$i \gets n-1$ \KwSty{downto} $0$}{
-			$output[count[arr[i]] - 1] = arr[i]$ \tcp*{Xây dựng mảng kết quả} 
-			$count[arr[i]]--$
-		}
-		
-		\For{$i \gets 0$ \KwTo $n-1$}{
-			$arr[i] = output[i]$ \tcp*{Sao chép mảng kết quả vào mảng ban đầu}
-		}
-	}
-	\textbf{end function}
+    \caption{Counting Sort}
+    \label{counting-sort}
+    
+    \SetKwFunction{CountingSort}{CountingSort}
+    \SetKwProg{Fn}{Function}{:}{}
+    \Fn{\CountingSort{arr\KwSty{[ ]}, n}}{
+        $maxVal \gets \max(arr)$ \tcp*{Tìm giá trị lớn nhất}
+        $minVal \gets \min(arr)$ \tcp*{Tìm giá trị nhỏ nhất}
+        $range \gets maxVal - minVal + 1$ \tcp*{Phạm vi giá trị trong mảng}
+        
+        $count[range] \gets \{0\}$ \tcp*{Mảng đếm có kích thước bằng phạm vi giá trị}
+        $output[n] \gets \{0\}$ \tcp*{Mảng kết quả}
+        
+        \For{$i \gets 0$ \KwTo $n-1$}{ 
+            $count[arr[i] - minVal]++$ \tcp*{Đếm số lần xuất hiện của mỗi phần tử}
+        }
+        
+        \For{$i \gets 1$ \KwTo $range-1$}{
+            $count[i] += count[i-1]$ \tcp*{Tính tổng tích lũy}
+        }
+        
+        \For{$i \gets n-1$ \KwSty{downto} $0$}{
+            $output[count[arr[i] - minVal] - 1] = arr[i]$ \tcp*{Xây dựng mảng kết quả} 
+            $count[arr[i] - minVal]--$
+        }
+        
+        \For{$i \gets 0$ \KwTo $n-1$}{
+            $arr[i] = output[i]$ \tcp*{Sao chép mảng kết quả vào mảng ban đầu}
+        }
+    }
+    \textbf{end function}
 \end{algorithm}
 
 \subsubsection{Ví dụ}
