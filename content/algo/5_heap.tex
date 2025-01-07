@@ -43,7 +43,7 @@
 
 \Fn{\HeapSort{a\KwSty{[]}, n}}{
     // Bước 1: Xây dựng Max-Heap từ node trong cuối cùng \\
-    \For{$i \gets n / 2 - 1$ \KwSty{downto} $0$}{
+    \For{$i \gets \lfloor n / 2 \rfloor - 1$ \KwSty{downto} $0$}{
         \Heapify{a, n, i} \\
     }
     // Bước 2: Sắp xếp mảng bằng cách trích xuất các phần tử lớn nhất \\
