@@ -41,15 +41,27 @@ Counting Sort không so sánh các phần tử mà dựa trên việc đếm s�
 
 \subsubsection{Độ phức tạp thuật toán}
 
-Với $k$ là giá trị lớn nhất trong mảng, ta có:
+Với $k$ là giá trị lớn nhất trong mảng trừ giá trị nhỏ nhất cộng thêm 1. Ta có:
 
 \begin{itemize}
 	\item Độ phức tạp thời gian
 	\begin{itemize}[label=$\circ$]
-		\item Trường hợp tốt nhất: $O(n+k)$.
-		\item Trường hợp xấu nhất: $O(n+k)$.
-		\item Trường hợp trung bình: $O(n+k)$. 
+		\item Trường hợp tốt nhất: $O\left(n+k\right)$. Khi khi $k$ nhỏ 
+		(các giá trị trong mảng nằm trong một khoảng hẹp), Counting Sort 
+		chỉ cần thực hiện một số ít phép đếm và truy cập mảng đếm.
+		\item Trường hợp xấu nhất: $O\left(n+k\right)$. Khi $k$ lớn (các 
+		giá trị trong mảng nằm trong một khoảng rất rộng), thuật toán 
+		vẫn phải tạo và xử lý mảng đếm có kích thước $k$.
+		\item Trường hợp trung bình: $O\left(n+k\right)$. Trong mọi 
+		trường hợp, Counting Sort luôn thực hiện một số bước cố định: 
+		đếm số lần xuất hiện, tính tổng tích lũy và xây dựng mảng kết quả. 
+		Do đó, độ phức tạp trung bình cũng là $O(n+k)$. 
 	\end{itemize}
-	
-	\item Độ phức tạp không gian: $O(n + k)$.
+	\item Độ phức tạp không gian: $O\left(n+k\right)$. Counting Sort 
+	yêu cầu thêm không gian để lưu trữ:
+	\begin{itemize}[label=$\circ$]
+		\item Mảng đếm: Có kích thước $k$ để đếm số lần xuất hiện của 
+		các giá trị trong mảng đầu vào.
+		\item Mảng kết quả: Có kích thước $n$ để lưu trữ mảng đã sắp xếp.
+	\end{itemize}
 \end{itemize}

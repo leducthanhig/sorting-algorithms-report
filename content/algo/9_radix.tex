@@ -49,15 +49,29 @@ Radix Sort sắp xếp các phần tử bằng cách xử lý từng chữ số 
 
 \subsubsection{Độ phức tạp thuật toán}
 
-Với $k$ và $n$ lần lượt là giá trị lớn nhất trong mảng và số chữ số lớn nhất trong mảng, ta có:
-
 \begin{itemize}
     \item Độ phức tạp thời gian
     \begin{itemize}[label=$\circ$]
-        \item Trường hợp tốt nhất: $O(d \times (n+k))$.
-        \item Trường hợp xấu nhất: $O(d \times (n+k))$.
-        \item Trường hợp trung bình: $O(d \times (n+k))$. 
+        \item Trường hợp tốt nhất: $O\left(d\times\left(n+k\right)\right)$. 
+        Khi $n$ lớn và $k$ nhỏ. 
+        \item Trường hợp xấu nhất: $O\left(d\times\left(n+k\right)\right)$. 
+        Trường hợp xấu nhất xảy ra khi giá trị lớn nhất trong mảng có nhiều 
+        chữ số $(d)$ lớn và phạm vi giá trị của mỗi chữ số $(k)$ lớn. Tuy nhiên, 
+        hiệu suất vẫn được đảm bảo bởi tính ổn định của Counting Sort.
+        \item Trường hợp trung bình: $O\left(d\times\left(n+k\right)\right)$. 
+        Trường hợp này xảy ra khi các giá trị trong mảng được phân bố ngẫu nhiên. 
+        Radix Sort vẫn thực hiện d lần Counting Sort với hiệu suất ổn định.
     \end{itemize}
     
-    \item Độ phức tạp không gian: $O(n + k)$
+    \item Độ phức tạp không gian: $O\left(n+k\right)$. Vì Radix Sort 
+    sử dụng không gian phụ từ Counting Sort.
+
+\end{itemize}
+
+Trong đó:
+
+\begin{itemize}[label=$\circ$]
+    \item d: Số lượng chữ số của giá trị lớn nhất có trong mảng.
+    \item k: Phạm vi giá trị của mỗi chữ số, phụ thuộc vào hệ cơ số 
+    mà Radix Sort sử dụng (ví dụ: với hệ thập phân, $k=10$).
 \end{itemize}

@@ -24,7 +24,7 @@ Shaker Sort là một biến thể của Bubble Sort, trong đó việc duyệt 
 				}
 			}
 			$right--$ \\
-			\For{$i = right$ \KwSty{downto} $left$}{
+			\For{$i = right - 1$ \KwSty{downto} $left$}{
 				\If{$arr[i] > arr[i+1]$}{
 					swap($arr[i]$, $arr[i+1]$)
 				}
@@ -42,23 +42,24 @@ Shaker Sort là một biến thể của Bubble Sort, trong đó việc duyệt 
 \begin{itemize}
 	\item Độ phức tạp thời gian
 	\begin{itemize}[label=$\circ$]
-		\item Trường hợp tốt nhất: $O(n)$ khi mảng đã được sắp xếp.
-		\item Trường hợp xấu nhất: $O(n^2)$.
-		\item Trường hợp trung bình: $O(n^2)$. 
+		\item Trường hợp tốt nhất: $O\left(n\right)$. Khi mảng đầu vào đã được sắp xếp hoàn toàn. Trong lần duyệt đầu tiên (từ trái sang phải), không có hoán đổi nào xảy ra. Thuật toán nhận biết điều này thông qua một cờ hiệu (flag) và kết thúc sớm. Vì thế chỉ cần thực hiện một lần duyệt qua mảng
+		\item Trường hợp xấu nhất: $O\left(n^2\right)$. Khi mảng đầu vào được sắp xếp theo thứ tự ngược hoàn toàn. Mỗi phần tử phải được hoán đổi qua lại nhiều lần để đến đúng vị trí. Trong lượt duyệt thứ $i$, thuật toán thực hiện $n - 1$ phép so sánh.
+		Tổng số phép so sánh (tương tự như Bubble Sort): 
+		\begin{equation*}
+			\left(n-1\right)+\left(n-2\right)+\ldots+2+1=\frac{n\left(n-1\right)}{2}\approx n^2
+		\end{equation*}
+		\item Trường hợp trung bình: $O\left(n^2\right)$. Khi mảng đầu vào có thứ tự ngẫu nhiên. Các phần tử được hoán đổi theo cả hai chiều trong mỗi lượt duyệt. Số lượt duyệt và số phép so sánh vẫn tương tự trường hợp xấu nhất, mặc dù có thể ít hoán đổi hơn.
 	\end{itemize}
-	
-	\item Độ phức tạp không gian: $O(1)$.
+	\item Độ phức tạp không gian: $O(1)$. Vì Shaker Sort là một thuật toán in-place, tức là nó không sử dụng thêm không gian phụ đáng kể ngoài các biến tạm thời ($left$ và $right$).  
 \end{itemize}
 
 \subsubsection{Các cải tiến của thuật toán}
 
 \begin{itemize}
-	
 	\item Dừng sớm khi mảng đã sắp xếp \\
 	Sử dụng một cờ hiệu (flag) để kiểm tra xem có xảy ra hoán đổi trong một lượt duyệt hay không, nếu không có hoán đổi, kết thúc sớm thay vì tiếp tục duyệt. Điều này giúp giảm số lần duyệt trong trường hợp mảng gần như đã sắp xếp.
 	\item Giảm số lần so sánh \\
 	Thay vì luôn duyệt đến cuối mảng, có thể ghi lại vị trí của lần hoán đổi cuối cùng. Phần sau vị trí này đã được sắp xếp và không cần kiểm tra nữa.
 	\item Kết hợp với Binary Search \\
 	Nếu mảng đầu vào gần như đã sắp xếp, có thể kết hợp Shaker Sort với Binary Search để tìm vị trí chính xác cho các phần tử bị sai vị trí, giảm số lần hoán đổi.
-	
 \end{itemize}
