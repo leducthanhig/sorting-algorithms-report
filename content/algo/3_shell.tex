@@ -52,7 +52,7 @@ phần tử bằng nhau có thể bị đổi chỗ do hoán đổi các nhóm c
 
 Giả sử ta có mảng ban đầu với $n=5$ như sau:
 \begin{center}
-    \begin{tikzpicture}
+    \begin{tikzpicture}[node distance=0cm, font=\sffamily, every node/.style={minimum width=1cm, minimum height=1cm, outer sep=0pt, anchor = west}, line join=miter, line cap=rect]
         \node[draw, fill=white] at (9, 0) {9};
         \node[draw, fill=white] at (10, 0) {8};
         \node[draw, fill=white] at (11, 0) {3};
@@ -65,7 +65,7 @@ Bắt đầu với $gap = 2$, thực hiện sắp xếp chèn với khoảng cá
 cho từng phần tử từ vị trí $gap$ đến hết bên phải mảng.
 
 \begin{center}
-    \begin{tikzpicture}
+    \begin{tikzpicture}[node distance=0cm, font=\sffamily, every node/.style={minimum width=1cm, minimum height=1cm, outer sep=0pt, anchor = west}, line join=miter, line cap=rect]
         % Substep 1
         \node[draw, fill=yellow] at (1, -3.5) {9};
         \node[draw, fill=white] at (2, -3.5) {8};
@@ -125,7 +125,7 @@ cho từng phần tử từ vị trí $gap$ đến hết bên phải mảng.
 Thực hiện tương tự với $gap = 1$, ta thu được mảng đã sắp xếp:
 
 \begin{center}
-    \begin{tikzpicture}
+    \begin{tikzpicture}[node distance=0cm, font=\sffamily, every node/.style={minimum width=1cm, minimum height=1cm, outer sep=0pt, anchor = west}, line join=miter, line cap=rect]
         \node[draw, fill=blue] at (9, 0) {3};
         \node[draw, fill=blue] at (10, 0) {5};
         \node[draw, fill=blue] at (11, 0) {7};
@@ -139,9 +139,25 @@ Thực hiện tương tự với $gap = 1$, ta thu được mảng đã sắp x�
 \begin{itemize}
     \item Độ phức tạp thời gian
     \begin{itemize}[label=$\circ$]
-        \item Trường hợp tốt nhất: $O\left(n\log{n}\right)$, khi dữ liệu gần như đã được sắp xếp.
-        \item Trường hợp xấu nhất: $O\left(n^2\right)$.
-        \item Trường hợp trung bình: $O\left(n^{3/2}\right)$.
+        \item Trường hợp tốt nhất: $O\left(n\log{n}\right)$, khi dữ liệu 
+        gần như đã được sắp xếp hoàn chỉnh. Với mảng gần như đã được sắp 
+        xếp hoàn chỉnh, mỗi lần chèn trong các bước của Insertion Sort sẽ 
+        tốn rất ít thời gian. Số lần duyệt qua mảng giảm đáng kể nhờ khoảng 
+        cách lớn ban đầu.
+        \item Trường hợp xấu nhất: $O\left(n^2\right)$, khi mảng đầu vào 
+        có thứ tự ngẫu nhiên. Trong trường hợp chuỗi khoảng cách không 
+        hiệu quả, các phần tử không được sắp xếp tốt ở các bước đầu, dẫn 
+        đến hiệu suất kém ở bước cuối cùng (khi khoảng cách là 1).
+        \item Trường hợp trung bình: $O\left(n^{3/2}\right)$, khi mảng đầu 
+        vào có thứ tự ngẫu nhiên. Với chuỗi khoảng cách hợp lý, Shell Sort 
+        giảm đáng kể số lần hoán đổi so với Insertion Sort, nhưng vẫn phụ 
+        thuộc vào thứ tự ban đầu của mảng.
     \end{itemize}
-    \item Độ phức tạp không gian: $O\left(1\right)$.
+    Lưu ý: Chuỗi khoảng cách là tập hợp tất cả các giá trị mà $gap$ nhận 
+    trong quá trình thực hiện thuật toán.
+    
+    \item Độ phức tạp không gian: $O\left(1\right)$, vì Shell Sort là một 
+    thuật toán in-place, nghĩa là nó không sử dụng bất kỳ cấu trúc dữ liệu 
+    phụ nào ngoài một số biến tạm thời. Toàn bộ việc sắp xếp được thực hiện 
+    trực tiếp trên mảng đầu vào. 
 \end{itemize}

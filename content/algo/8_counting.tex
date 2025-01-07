@@ -7,37 +7,144 @@ Counting Sort không so sánh các phần tử mà dựa trên việc đếm s�
 \subsubsection{Mã giả}
 
 \begin{algorithm}[H]
-	\caption{Counting Sort}
-	\label{counting-sort}
-	
-	\SetKwFunction{CountingSort}{CountingSort}
-	\SetKwFunction{Counting Sort}{Counting Sort}
-	\SetKwProg{Fn}{Function}{:}{}
-	\Fn{\CountingSort {arr\KwSty{[ ]}, n, k}}{
-		$count[10] \gets \{0\}$ \tcp*{Mảng đếm cho với kích thước k}
-		$output[n] \gets \{0\}$ \tcp*{Mảng kết quả}
-		
-		\For{$i \gets 0$ \KwTo $n-1$}{ 
-			$count[arr[i]]++$ \tcp*{Đếm số lần xuất hiện của mỗi phần tử}
-		}
-		
-		\For{$i \gets 1$ \KwTo $k-1$}{
-			$count[i] += count[i-1]$ \tcp*{Tính tổng tích lũy}
-		}
-		
-		\For{$i \gets n-1$ \KwSty{downto} $0$}{
-			$output[count[arr[i]] - 1] = arr[i]$ \tcp*{Xây dựng mảng kết quả} 
-			$count[arr[i]]--$
-		}
-		
-		\For{$i \gets 0$ \KwTo $n-1$}{
-			$arr[i] = output[i]$ \tcp*{Sao chép mảng kết quả vào mảng ban đầu}
-		}
-	}
-	\textbf{end function}
+    \caption{Counting Sort}
+    \label{counting-sort}
+    
+    \SetKwFunction{CountingSort}{CountingSort}
+    \SetKwProg{Fn}{Function}{:}{}
+    \Fn{\CountingSort{arr\KwSty{[ ]}, n}}{
+        $maxVal \gets \max(arr)$ \tcp*{Tìm giá trị lớn nhất}
+        $minVal \gets \min(arr)$ \tcp*{Tìm giá trị nhỏ nhất}
+        $range \gets maxVal - minVal + 1$ \tcp*{Phạm vi giá trị trong mảng}
+        
+        $count[range] \gets \{0\}$ \tcp*{Mảng đếm có kích thước bằng phạm vi giá trị}
+        $output[n] \gets \{0\}$ \tcp*{Mảng kết quả}
+        
+        \For{$i \gets 0$ \KwTo $n-1$}{ 
+            $count[arr[i] - minVal]++$ \tcp*{Đếm số lần xuất hiện của mỗi phần tử}
+        }
+        
+        \For{$i \gets 1$ \KwTo $range-1$}{
+            $count[i] += count[i-1]$ \tcp*{Tính tổng tích lũy}
+        }
+        
+        \For{$i \gets n-1$ \KwSty{downto} $0$}{
+            $output[count[arr[i] - minVal] - 1] = arr[i]$ \tcp*{Xây dựng mảng kết quả} 
+            $count[arr[i] - minVal]--$
+        }
+        
+        \For{$i \gets 0$ \KwTo $n-1$}{
+            $arr[i] = output[i]$ \tcp*{Sao chép mảng kết quả vào mảng ban đầu}
+        }
+    }
+    \textbf{end function}
 \end{algorithm}
 
 \subsubsection{Ví dụ}
+
+Giả sử ta có mảng ban đầu với $n=7$ như sau:
+\begin{center}
+    \begin{tikzpicture}[node distance=0cm, font=\sffamily, every node/.style={minimum width=1cm, minimum height=1cm, outer sep=0pt, anchor = west}, line join=miter, line cap=rect]
+        \node[draw, fill=white] at (1, 0) {4};
+        \node[draw, fill=white] at (2, 0) {2};
+        \node[draw, fill=white] at (3, 0) {2};
+        \node[draw, fill=white] at (4, 0) {8};
+        \node[draw, fill=white] at (5, 0) {3};
+        \node[draw, fill=white] at (6, 0) {3};
+        \node[draw, fill=white] at (7, 0) {1};
+    \end{tikzpicture}
+\end{center}
+
+\textbf{Bước 1:} Tìm $min$ và $max$ trong mảng để tính $k = max - min + 1
+= 8 - 1 + 1 = 8$. Khởi tạo mảng đếm $count$ có kích thước $k$:
+
+\begin{center}
+    \begin{tikzpicture}[node distance=0cm, font=\sffamily, every node/.style={minimum width=1cm, minimum height=1cm, outer sep=0pt, anchor = west}, line join=miter, line cap=rect]
+        \node[font=\rmfamily] at (2, 0) {0};
+        \node[font=\rmfamily] at (3, 0) {1};
+        \node[font=\rmfamily] at (4, 0) {2};
+        \node[font=\rmfamily] at (5, 0) {3};
+        \node[font=\rmfamily] at (6, 0) {4};
+        \node[font=\rmfamily] at (7, 0) {5};
+        \node[font=\rmfamily] at (8, 0) {6};
+        \node[font=\rmfamily] at (9, 0) {7};
+		\node[font=\rmfamily] at (0, -1) {$count$};
+        \node[draw, fill=white] at (2, -1) {0};
+        \node[draw, fill=white] at (3, -1) {0};
+        \node[draw, fill=white] at (4, -1) {0};
+        \node[draw, fill=white] at (5, -1) {0};
+        \node[draw, fill=white] at (6, -1) {0};
+        \node[draw, fill=white] at (7, -1) {0};
+        \node[draw, fill=white] at (8, -1) {0};
+        \node[draw, fill=white] at (9, -1) {0};
+    \end{tikzpicture}
+\end{center}
+
+\textbf{Bước 2:} Duyệt qua từng phần tử trong mảng để đếm số lần xuất hiện
+và lưu vào mảng đếm $(count)$ tại vị trí tương ứng với giá trị của phần tử 
+đó trừ đi giá trị nhỏ nhất trong mảng đầu vào. Khi đó sẽ thu được mảng:
+
+\begin{center}
+    \begin{tikzpicture}[node distance=0cm, font=\sffamily, every node/.style={minimum width=1cm, minimum height=1cm, outer sep=0pt, anchor = west}, line join=miter, line cap=rect]
+        \node[font=\rmfamily] at (2, 0) {0};
+        \node[font=\rmfamily] at (3, 0) {1};
+        \node[font=\rmfamily] at (4, 0) {2};
+        \node[font=\rmfamily] at (5, 0) {3};
+        \node[font=\rmfamily] at (6, 0) {4};
+        \node[font=\rmfamily] at (7, 0) {5};
+        \node[font=\rmfamily] at (8, 0) {6};
+        \node[font=\rmfamily] at (9, 0) {7};
+		\node[font=\rmfamily] at (0, -1) {$count$};
+        \node[draw, fill=white] at (2, -1) {1};
+        \node[draw, fill=white] at (3, -1) {2};
+        \node[draw, fill=white] at (4, -1) {2};
+        \node[draw, fill=white] at (5, -1) {1};
+        \node[draw, fill=white] at (6, -1) {0};
+        \node[draw, fill=white] at (7, -1) {0};
+        \node[draw, fill=white] at (8, -1) {0};
+        \node[draw, fill=white] at (9, -1) {1};
+    \end{tikzpicture}
+\end{center}
+
+\textbf{Bước 3:} Tính tổng tích lũy cho mảng đếm $(count)$ sẽ thu được mảng sau:
+
+\begin{center}
+    \begin{tikzpicture}[node distance=0cm, font=\sffamily, every node/.style={minimum width=1cm, minimum height=1cm, outer sep=0pt, anchor = west}, line join=miter, line cap=rect]
+        \node[font=\rmfamily] at (2, 0) {0};
+        \node[font=\rmfamily] at (3, 0) {1};
+        \node[font=\rmfamily] at (4, 0) {2};
+        \node[font=\rmfamily] at (5, 0) {3};
+        \node[font=\rmfamily] at (6, 0) {4};
+        \node[font=\rmfamily] at (7, 0) {5};
+        \node[font=\rmfamily] at (8, 0) {6};
+        \node[font=\rmfamily] at (9, 0) {7};
+		\node[font=\rmfamily] at (0, -1) {$count$};
+        \node[draw, fill=white] at (2, -1) {1};
+        \node[draw, fill=white] at (3, -1) {3};
+        \node[draw, fill=white] at (4, -1) {5};
+        \node[draw, fill=white] at (5, -1) {6};
+        \node[draw, fill=white] at (6, -1) {6};
+        \node[draw, fill=white] at (7, -1) {6};
+        \node[draw, fill=white] at (8, -1) {6};
+        \node[draw, fill=white] at (9, -1) {7};
+    \end{tikzpicture}
+\end{center}
+
+\textbf{Bước 4:} Xây dựng mảng kết quả theo công thức 
+$output[count[intput[i] - min] - 1] = intput[i]$ và giảm giá trị mảng đếm
+tại vị trí vừa truy cập. Khi đó ta được mảng đã sắp xếp:
+
+\begin{center}
+    \begin{tikzpicture}[node distance=0cm, font=\sffamily, every node/.style={minimum width=1cm, minimum height=1cm, outer sep=0pt, anchor = west}, line join=miter, line cap=rect]
+        \node[draw, fill=blue] at (1, 0) {1};
+        \node[draw, fill=blue] at (2, 0) {2};
+        \node[draw, fill=blue] at (3, 0) {2};
+        \node[draw, fill=blue] at (4, 0) {3};
+        \node[draw, fill=blue] at (5, 0) {3};
+        \node[draw, fill=blue] at (6, 0) {4};
+        \node[draw, fill=blue] at (7, 0) {8};
+    \end{tikzpicture}
+\end{center}
 
 \subsubsection{Độ phức tạp thuật toán}
 
