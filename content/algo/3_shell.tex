@@ -139,9 +139,25 @@ Thực hiện tương tự với $gap = 1$, ta thu được mảng đã sắp x�
 \begin{itemize}
     \item Độ phức tạp thời gian
     \begin{itemize}[label=$\circ$]
-        \item Trường hợp tốt nhất: $O\left(n\log{n}\right)$, khi dữ liệu gần như đã được sắp xếp.
-        \item Trường hợp xấu nhất: $O\left(n^2\right)$.
-        \item Trường hợp trung bình: $O\left(n^{3/2}\right)$.
+        \item Trường hợp tốt nhất: $O\left(n\log{n}\right)$, khi dữ liệu 
+        gần như đã được sắp xếp hoàn chỉnh. Với mảng gần như đã được sắp 
+        xếp hoàn chỉnh, mỗi lần chèn trong các bước của Insertion Sort sẽ 
+        tốn rất ít thời gian. Số lần duyệt qua mảng giảm đáng kể nhờ khoảng 
+        cách lớn ban đầu.
+        \item Trường hợp xấu nhất: $O\left(n^2\right)$, khi mảng đầu vào 
+        có thứ tự ngẫu nhiên. Trong trường hợp chuỗi khoảng cách không 
+        hiệu quả, các phần tử không được sắp xếp tốt ở các bước đầu, dẫn 
+        đến hiệu suất kém ở bước cuối cùng (khi khoảng cách là 1).
+        \item Trường hợp trung bình: $O\left(n^{3/2}\right)$, khi mảng đầu 
+        vào có thứ tự ngẫu nhiên. Với chuỗi khoảng cách hợp lý, Shell Sort 
+        giảm đáng kể số lần hoán đổi so với Insertion Sort, nhưng vẫn phụ 
+        thuộc vào thứ tự ban đầu của mảng.
     \end{itemize}
-    \item Độ phức tạp không gian: $O\left(1\right)$.
+    Lưu ý: Chuỗi khoảng cách là tập hợp tất cả các giá trị mà $gap$ nhận 
+    trong quá trình thực hiện thuật toán.
+    
+    \item Độ phức tạp không gian: $O\left(1\right)$, vì Shell Sort là một 
+    thuật toán in-place, nghĩa là nó không sử dụng bất kỳ cấu trúc dữ liệu 
+    phụ nào ngoài một số biến tạm thời. Toàn bộ việc sắp xếp được thực hiện 
+    trực tiếp trên mảng đầu vào. 
 \end{itemize}
