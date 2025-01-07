@@ -51,6 +51,112 @@ Thuật toán sắp xếp trộn sử dụng phương pháp chia để trị (di
 
 \subsubsection{Ví dụ}
 
+\begin{tikzpicture}[node distance=0cm, font=\sffamily, every node/.style={minimum width=1cm, minimum height=1cm, outer sep=0pt, anchor = west}, line join=miter, line cap=rect]
+	
+	\node[font=\rmfamily] at (0, 0) {}; %coordinate
+	
+	% Trạng thái ban đầu
+	\node[draw, fill=white] at (4, 0) {8};
+	\node[draw, fill=white] at (5, 0) {3};
+	\node[draw, fill=white] at (6, 0) {1};
+	\node[draw, fill=white] at (7, 0) {7};
+	\node[draw, fill=white] at (8, 0) {0};
+	\node[draw, fill=white] at (9, 0) {10};
+	\node[draw, fill=white] at (10, 0) {2};
+	\draw[->, >=stealth, line width=0.5mm, shorten <=0pt] (7, -0.55) -- (4, -1.45);
+	\draw[->, >=stealth, line width=0.5mm, shorten <=0pt] (7, -0.55) -- (10, -1.45);
+	
+	% Chia đôi lần 1
+	\node[draw, fill=yellow] at (2.5, -2) {8};
+	\node[draw, fill=yellow] at (3.5, -2) {3};
+	\node[draw, fill=yellow] at (4.5, -2) {1};
+	\node[draw, fill=yellow] at (8, -2) {7};
+	\node[draw, fill=yellow] at (9, -2) {0};
+	\node[draw, fill=yellow] at (10, -2) {10};
+	\node[draw, fill=yellow] at (11, -2) {2};
+	\draw[->, >=stealth, line width=0.5mm, shorten <=0pt] (3.5, -2.55) -- (2, -3.45);
+	\draw[->, >=stealth, line width=0.5mm, shorten <=0pt] (3.5, -2.55) -- (5, -3.45);
+	\draw[->, >=stealth, line width=0.5mm, shorten <=0pt] (10, -2.55) -- (8.5, -3.45);
+	\draw[->, >=stealth, line width=0.5mm, shorten <=0pt] (10, -2.55) -- (12, -3.45);
+	
+	% Chia đôi lần 2
+	\node[draw, fill=yellow] at (1.5, -4) {8};
+	\node[draw, fill=yellow] at (4, -4) {3};
+	\node[draw, fill=yellow] at (5, -4) {1};
+	\node[draw, fill=yellow] at (7.5, -4) {7};
+	\node[draw, fill=yellow] at (8.5, -4) {0};
+	\node[draw, fill=yellow] at (11, -4) {10};
+	\node[draw, fill=yellow] at (12, -4) {2};
+	\draw[->, >=stealth, line width=0.5mm, shorten <=0pt] (2, -4.55) -- (2, -5.45);
+	\draw[->, line width=0.5mm, shorten <=0pt] (5, -4.55) -- (4, -5.45);
+	\draw[->, >=stealth, line width=0.5mm, shorten <=0pt] (5, -4.55) -- (6, -5.45);
+	\draw[->, >=stealth, line width=0.5mm, shorten <=0pt] (8.5, -4.55) -- (7.5, -5.45);
+	\draw[->, >=stealth, line width=0.5mm, shorten <=0pt] (8.5, -4.55) -- (9.5, -5.45);
+	\draw[->, >=stealth, line width=0.5mm, shorten <=0pt] (12, -4.55) -- (11, -5.45);
+	\draw[->, >=stealth, line width=0.5mm, shorten <=0pt] (12, -4.55) -- (13, -5.45);
+	
+	% Chia đôi lần 3
+	\node[draw, fill=yellow] at (1.5, -6) {8};
+	\node[draw, fill=yellow] at (3.5, -6) {3};
+	\node[draw, fill=yellow] at (5.5, -6) {1};
+	\node[draw, fill=yellow] at (7, -6) {7};
+	\node[draw, fill=yellow] at (9, -6) {0};
+	\node[draw, fill=yellow] at (10.5, -6) {10};
+	\node[draw, fill=yellow] at (12.5, -6) {2};
+	\draw[->, >=stealth, line width=0.5mm, shorten <=0pt] (2, -6.55) -- (2, -7.45);
+	\draw[->, >=stealth, line width=0.5mm, shorten <=0pt] (4, -6.55) -- (5, -7.45);
+	\draw[->, >=stealth, line width=0.5mm, shorten <=0pt] (6, -6.55) -- (5, -7.45);
+	\draw[->, >=stealth, line width=0.5mm, shorten <=0pt] (7.5, -6.55) -- (8.5, -7.45);
+	\draw[->, >=stealth, line width=0.5mm, shorten <=0pt] (9.5, -6.55) -- (8.5, -7.45);
+	\draw[->, >=stealth, line width=0.5mm, shorten <=0pt] (11, -6.55) -- (12, -7.45);
+	\draw[->, >=stealth, line width=0.5mm, shorten <=0pt] (13, -6.55) -- (12, -7.45);
+	
+	% Trộn lần 1
+	\node[draw, fill=blue] at (1.5, -8) {8};
+	\node[draw, fill=blue] at (4, -8) {1};
+	\node[draw, fill=blue] at (5, -8) {3};
+	\node[draw, fill=blue] at (7.5, -8) {0};
+	\node[draw, fill=blue] at (8.5, -8) {7};
+	\node[draw, fill=blue] at (11, -8) {2};
+	\node[draw, fill=blue] at (12, -8) {10};
+	\draw[->, >=stealth, line width=0.5mm, shorten <=0pt] (2, -8.55) -- (3.5, -9.45);
+	\draw[->, >=stealth, line width=0.5mm, shorten <=0pt] (5, -8.55) -- (3.5, -9.45);
+	\draw[->, >=stealth, line width=0.5mm, shorten <=0pt] (8.5, -8.55) -- (10, -9.45);
+	\draw[->, >=stealth, line width=0.5mm, shorten <=0pt] (12, -8.55) -- (10, -9.45);
+	
+	% Trộn lần 2
+	\node[draw, fill=blue] at (2.5, -10) {1};
+	\node[draw, fill=blue] at (3.5, -10) {3};
+	\node[draw, fill=blue] at (4.5, -10) {8};
+	\node[draw, fill=blue] at (8, -10) {0};
+	\node[draw, fill=blue] at (9, -10) {2};
+	\node[draw, fill=blue] at (10, -10) {7};
+	\node[draw, fill=blue] at (11, -10) {10};
+	\draw[->, >=stealth, line width=0.5mm, shorten <=0pt] (4, -10.55) -- (7, -11.45);
+	\draw[->, >=stealth, line width=0.5mm, shorten <=0pt]  (10, -10.55) -- (7, -11.45);
+	
+	%Trộn lần 3
+	\node[draw, fill=blue] at (4, -12) {0};
+	\node[draw, fill=blue] at (5, -12) {1};
+	\node[draw, fill=blue] at (6, -12) {2};
+	\node[draw, fill=blue] at (7, -12) {3};
+	\node[draw, fill=blue] at (8, -12) {7};
+	\node[draw, fill=blue] at (9, -12) {8};
+	\node[draw, fill=blue] at (10, -12) {10};
+	
+	% Giai đoạn 1
+	\draw[line width=0.3mm, shorten <=0pt]  (14, 0) -- (14.2, 0);
+	\draw[line width=0.3mm, shorten <=0pt]  (14.2, 0) -- (14.2, -5.8);
+	\draw[line width=0.3mm, shorten <=0pt]  (14.2, -5.8) -- (14, -5.8);
+	\node[font=\rmfamily, text width=3cm] at (14.4, -2.8) {{\bfseries Giai đoạn 1:} \par Chia đôi mảng \par liên tục cho \par đến khi chỉ \par còn 1 phần tử};
+	
+	% Giai đoạn 2
+	\draw[line width=0.3mm, shorten <=0pt]  (14, -6) -- (14.2, -6);
+	\draw[line width=0.3mm, shorten <=0pt]  (14.2, -6) -- (14.2, -12);
+	\draw[line width=0.3mm, shorten <=0pt]  (14.2, -12) -- (14, -12);
+	\node[font=\rmfamily, text width=3cm] at (14.4, -8.8) {{\bfseries Giai đoạn 2:} \par Trộn các mảng \par đã có thứ tự};
+\end{tikzpicture}
+
 \subsubsection{Độ phức tạp thuật toán}
 
 \begin{itemize}
