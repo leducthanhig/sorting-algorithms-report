@@ -395,19 +395,18 @@ $\bullet$ \textbf{Với đầu vào có thứ tự ngẫu nhiên}
 \begin{itemize}[label=$\circ$]
     \item Thuật toán Bubble Sort có tốc độ chậm nhất với mọi kích thước 
     đầu vào, ngược lại Insertion Sort nhanh nhất trong nhóm thuật toán 
-    có độ phức tạp là $O\left(n^2\right)$ cho dù số lượng phần tử có tăng 
+    có độ phức tạp trung bình là $O\left(n^2\right)$ cho dù số lượng phần tử có tăng 
     cao, thì thời gian thực thi vẫn không tăng quá nhiều. 
     \item Về nhóm thuật toán có độ phức tạp là $O\left(nlogn\right)$, 
     Merge Sort chậm đi rất nhiều khi kích thước đầu vào tăng lên do tiêu 
     tốn nhiều thời gian cho việc chia và trộn nhiều mảng con. Còn Quick 
     Sort mặc dù có tăng thời gian thực thi khi cỡ mẫu lớn hơn 100,000 
     nhưng vẫn nhanh nhất trong nhóm thuật toán này. 
-    \item Cuối cùng là nhóm thuật toán có độ phức tạp là $O\left(n\right)$, 
-    Counting Sort giữ vị trí thứ nhất nhưng bị hạn chế về kiểu dữ liệu, 
-    như với số thực hoặc số nguyên lớn cần phải xử lý một cách khéo léo. 
-    Mặc khác, Flash Sort có thể xử lý đa dạng kiểu dữ liệu và tốc độ cũng 
-    đáng kể nhưng phụ thuộc vào sự phân phối của dữ liệu đầu vào và quá 
-    trình cài đặt khá phức tạp.
+    \item Với các thuật toán còn lại, Counting Sort giữ vị trí thứ nhất 
+    nhưng bị hạn chế về kiểu dữ liệu, như với số thực hoặc số nguyên lớn 
+    cần phải xử lý một cách khéo léo. Mặc khác, Flash Sort có thể xử lý 
+    đa dạng kiểu dữ liệu và tốc độ cũng đáng kể nhưng phụ thuộc vào sự 
+    phân phối của dữ liệu đầu vào và quá trình cài đặt khá phức tạp.
 \end{itemize}
 
 $\bullet$ \textbf{Với đầu vào có thứ tự gần được sắp xếp}
@@ -504,9 +503,9 @@ $\bullet$ \textbf{Với đầu vào có thứ tự gần được sắp xếp}
     \item Các thuật toán như Selection Sort, Shell Sort, Bubble Sort, 
     Merge Sort và Heap Sort đều không có nhiều cải thiện. Ngược lại, 
     Shaker Sort, Insertion Sort và Quick Sort đã giảm đáng kể thời gian 
-    thực thi xuống ngang bằng với nhóm thuật toán có độ phức tạp thời 
-    gian là $O\left(n\right)$, thậm chí Insertion Sort còn giữ vị trí 
-    nhanh nhất do chỉ cần đưa một vài phần tử nằm sai vị trí về đúng chỗ.
+    thực thi xuống ngang bằng với nhóm thuật toán còn lại, thậm chí 
+    Insertion Sort còn giữ vị trí nhanh nhất do chỉ cần đưa một vài 
+    phần tử nằm sai vị trí về đúng chỗ.
 \end{itemize}
 
 $\bullet$ \textbf{Với đầu vào có thứ tự đã được sắp xếp}
@@ -606,12 +605,11 @@ $\bullet$ \textbf{Với đầu vào có thứ tự đã được sắp xếp}
     thời gian chạy không chênh lệch nhiều so với nhau.
     \item Trong nhóm thuật toán có độ phức tạp $O\left(n\log{n}\right)$ 
     thì Shell Sort lại dường như tốn rất nhiều thời gian tương đương với 
-    một số thuật toán thuộc $O\left(n^2\right)$, còn Quick Sort là thuật 
-    toán có thời gian chạy nhanh nhất, Heap Sort thì nhanh hơn Merge Sort 
-    một chút.
-    \item Trong nhóm thuật toán có độ phức tạp $O\left(n\right)$ thì 
-    Counting Sort vẫn có thời gian chạy nhanh nhất, còn Radix Sort thì 
-    có thời gian chạy chậm nhất trong nhóm thuật toán này.
+    một số thuật toán có độ phức tạp trung bình là $O\left(n^2\right)$, 
+    còn Quick Sort là thuật toán có thời gian chạy nhanh nhất, Heap Sort 
+    thì nhanh hơn Merge Sort một chút.
+    \item Trong nhóm thuật toán còn lại thì Counting Sort vẫn có thời 
+    gian chạy nhanh nhất, còn Radix Sort thì có thời gian chạy chậm nhất.
 \end{itemize}
 
 $\bullet$ \textbf{Với đầu vào có thứ tự được sắp xếp ngược}
@@ -716,10 +714,10 @@ $\bullet$ \textbf{Với đầu vào có thứ tự được sắp xếp ngược
     $O\left(n\log{n}\right)$ như Quick Sort, Merge Sort và Heap Sort thể 
     hiện hiệu suất vượt trội hơn, với Merge Sort và Heap Sort ổn định hơn 
     so với Quick Sort do đặc thù phân chia dữ liệu của chúng.
-    \item Đặc biệt, các thuật toán có độ phức tạp $O\left(n\right)$ như 
-    Counting Sort và Flash Sort cho thấy thời gian thực thi thấp nhất 
-    trong các biểu đồ, chứng minh tính vượt trội khi xử lý các dữ liệu 
-    lớn ngay cả trong trường hợp xấu nhất.
+    \item Đặc biệt, các thuật toán còn lại như Counting Sort và Flash 
+    Sort cho thấy thời gian thực thi thấp nhất trong các biểu đồ, chứng 
+    minh tính vượt trội khi xử lý các dữ liệu lớn ngay cả trong trường 
+    hợp xấu nhất.
 \end{itemize}
 
 \subsubsection{Về số phép so sánh}
@@ -842,22 +840,23 @@ $\bullet$ \textbf{Với đầu vào có thứ tự ngẫu nhiên}
     xếp thay đổi đáng kể tùy thuộc vào độ phức tạp về thời gian của từng 
     thuật toán. Nhóm các thuật toán có số phép so sánh lớn nhất bao gồm 
     Selection Sort, Insertion Sort, Shell Sort, Bubble Sort và Shaker 
-    Sort do có độ phức tạp $O\left(n^2\right)$. Trong đó, cả 3 thuật toán 
-    gồm Selection Sort, Shell Sort, Bubble Sort đều có số phép so sánh 
-    bằng nhau và lớn nhất so với 8 thuật toán còn lại. Điều này dẫn đến 
-    số phép so sánh tăng nhanh khi kích thước mảng lớn, đặc biệt là ở các 
-    mảng kích thước 300000 và 500000, với cột biểu đồ vượt trội hơn hẳn 
-    so với các thuật toán khác.
+    Sort do có độ phức tạp trung bình là $O\left(n^2\right)$. Trong đó, 
+    cả 3 thuật toán gồm Selection Sort, Shell Sort, Bubble Sort đều có 
+    số phép so sánh bằng nhau và lớn nhất so với 8 thuật toán còn lại. 
+    Điều này dẫn đến số phép so sánh tăng nhanh khi kích thước mảng lớn, 
+    đặc biệt là ở các mảng kích thước 300000 và 500000, với cột biểu đồ 
+    vượt trội hơn hẳn so với các thuật toán khác.
 	\item Trong khi đó, nhóm thuật toán có hiệu suất trung bình như Heap 
     Sort, Merge Sort, và Quick Sort hoạt động hiệu quả hơn nhờ độ phức 
-    tạp $O\left(n\log{n}\right)$. Quick Sort có số phép so sánh thấp hơn 
-    so với Heap Sort và Merge Sort, cho thấy ưu thế rõ rệt khi xử lý trên 
-    mảng ngẫu nhiên.
+    tạp có độ phức tạp trung bình là $O\left(n\log{n}\right)$. Quick Sort 
+    có số phép so sánh thấp hơn so với Heap Sort và Merge Sort, cho thấy 
+    ưu thế rõ rệt khi xử lý trên mảng ngẫu nhiên.
 	\item Cuối cùng, nhóm thuật toán có số phép so sánh thấp nhất bao 
     gồm Radix Sort, Counting Sort, và Flash Sort, nhờ đặc điểm không dựa 
-    trên các phép so sánh với độ phức tạp gần như là $O\left(n\right)$. 
-    Counting Sort đặc biệt nổi bật với số phép so sánh thấp nhất trong 
-    nhóm này và thấp nhất trong 11 thuật toán.
+    trên các phép so sánh với độ phức tạp lần lượt là $O(d \times (n + k))$, 
+    $O(n + k)$ và $O\left(n\right)$. Counting Sort đặc biệt nổi bật với 
+    số phép so sánh thấp nhất trong nhóm này và thấp nhất trong 11 thuật 
+    toán.
 \end{itemize}
 
 $\bullet$ \textbf{Với đầu vào có thứ tự gần được sắp xếp}
@@ -1003,25 +1002,24 @@ $\bullet$ \textbf{Với đầu vào có thứ tự gần được sắp xếp}
     xếp thay đổi đáng kể tùy thuộc vào độ phức tạp về thời gian và khả 
     năng tối ưu hóa đối với mảng đã có trật tự. Nhóm các thuật toán có 
     số phép so sánh lớn nhất bao gồm Selection Sort, Shell Sort, và 
-    Bubble Sort do có độ phức tạp $O\left(n^2\right)$ và không tận dụng 
-    được tính chất mảng gần như đã sắp xếp. Trong đó, cả ba thuật toán 
-    này đều có số phép so sánh cao nhất, đặc biệt khi kích thước mảng 
-    tăng lên 300000 và 500000, với cột biểu đồ vượt trội so với các 
-    thuật toán khác. Insertion Sort, nhờ khả năng tối ưu hóa tốt cho 
-    các mảng đã gần sắp xếp, thực hiện ít phép so sánh hơn đáng kể, 
-    trong khi Shaker Sort (một biến thể của Bubble Sort) cũng cho thấy 
-    hiệu năng cải thiện nhưng vẫn kém hiệu quả hơn Insertion Sort. 
-	\item Đối với các thuật toán có độ phức tạp là $O\left(n\log{n}\right)$ 
+    Bubble Sort do có độ phức tạp trung bình là $O\left(n^2\right)$ và 
+    không tận dụng được tính chất mảng gần như đã sắp xếp. Trong đó, cả 
+    ba thuật toán này đều có số phép so sánh cao nhất, đặc biệt khi kích 
+    thước mảng tăng lên 300000 và 500000, với cột biểu đồ vượt trội so với 
+    các thuật toán khác. Insertion Sort, nhờ khả năng tối ưu hóa tốt cho 
+    các mảng đã gần được sắp xếp hoàn chỉnh, thực hiện ít phép so sánh 
+    hơn đáng kể, trong khi Shaker Sort (một biến thể của Bubble Sort) cũng 
+    cho thấy hiệu năng cải thiện nhưng vẫn kém hiệu quả hơn Insertion Sort. 
+	\item Đối với các thuật toán có độ phức tạp trung bình là $O\left(n\log{n}\right)$ 
     về thời gian, Heap Sort thực hiện nhiều phép so sánh hơn so với Merge 
     Sort và Quick Sort. Trong đó, Quick Sort tỏ ra vượt trội hơn Merge 
     Sort nhờ khả năng tận dụng tốt tính chất của mảng gần như được sắp xếp. 
 	\item Cuối cùng, nhóm thuật toán có số phép so sánh thấp nhất bao 
     gồm Radix Sort, Counting Sort và Flash Sort, nhờ đặc điểm không phụ 
-    thuộc vào số phép so sánh với độ phức tạp gần như là $O\left(n\right)$. 
-    Nhóm này không chỉ có số phép so sánh thấp nhất mà còn duy trì hiệu 
-    năng ổn định ngay cả khi kích thước mảng tăng cao. Đặc biệt, Counting 
-    Sort có số phép so sánh nhỏ nhất với tất cả kích thước đầu vào trong 
-    mảng có thứ tự gần được sắp xếp hoàn chỉnh.
+    thuộc vào số phép so sánh. Nhóm này không chỉ có số phép so sánh thấp 
+    nhất mà còn duy trì hiệu năng ổn định ngay cả khi kích thước mảng tăng 
+    cao. Đặc biệt, Counting Sort có số phép so sánh nhỏ nhất với tất cả 
+    kích thước đầu vào trong mảng có thứ tự gần được sắp xếp hoàn chỉnh.
 \end{itemize}
 
 $\bullet$ \textbf{Với đầu vào có thứ tự đã được sắp xếp}
