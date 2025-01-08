@@ -11,14 +11,14 @@
         của mảng.
         \item Giảm kích thước của heap đi 1 và gọi hàm Heapify để 
         duy trì tính chất Max-Heap.
-        \item Lặp lại quá trình này cho đến khi heap chỉ còn một phần tử. \cite[p.~170]{cormen2022}
+        \item Lặp lại quá trình này cho đến khi heap chỉ còn một phần tử.
     \end{enumerate}
 \end{itemize}
 
 \subsubsection{Mã giả}
 
 \begin{algorithm}[H]
-\caption{Heap Sort \cite{code-heap}}
+\caption{Heap Sort}
 \SetKwFunction{Heapify}{heapify}
 \SetKwFunction{HeapSort}{HeapSort}
 \SetKwProg{Fn}{Function}{:}{}
@@ -223,7 +223,7 @@
 \subsubsection{Độ phức tạp thuật toán}
 
 \begin{itemize}
-    \item Độ phức tạp thời gian \cite[p.~102]{hoang2008}
+    \item Độ phức tạp thời gian
     \begin{itemize}[label=$\circ$]
         \item Trường hợp tốt nhất: $O(n\log{n})$ vì khi xây dựng heap 
         và thực hiện thao tác heapify vẫn cần $O(n \log n)$ do tính 

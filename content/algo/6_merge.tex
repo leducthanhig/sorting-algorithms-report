@@ -2,12 +2,12 @@
 
 \subsubsection{Ý tưởng}
 
-Thuật toán sắp xếp trộn sử dụng phương pháp chia để trị (divide-and-conquer). Đầu tiên, chia mảng $a[1..n]$ thành 2 mảng con có kích thước $n/2$ là $a[1..mid]$ và $a[mid + 1..n]$, sắp xếp và trộn hai mảng này lại, ta thu được mảng $n/2$ phần tử đã được sắp xếp. Để sắp xếp mảng $n/2$ phần tử ta lại tiếp tục chia thành hai mảng có $n/4$ phần tử, cứ như vậy gọi đệ quy cho đến khi mảng chỉ có 1 phần tử thì xem như là đã được sắp xếp. \cite[p.~241]{weiss2013}
+Thuật toán sắp xếp trộn sử dụng phương pháp chia để trị (divide-and-conquer). Đầu tiên, chia mảng $a[1..n]$ thành 2 mảng con có kích thước $n/2$ là $a[1..mid]$ và $a[mid + 1..n]$, sắp xếp và trộn hai mảng này lại, ta thu được mảng $n/2$ phần tử đã được sắp xếp. Để sắp xếp mảng $n/2$ phần tử ta lại tiếp tục chia thành hai mảng có $n/4$ phần tử, cứ như vậy gọi đệ quy cho đến khi mảng chỉ có 1 phần tử thì xem như là đã được sắp xếp.
 
 \subsubsection{Mã giả}
 
 \begin{algorithm}[H]
-\caption{Merge Sort \cite{code-merge}}
+\caption{Merge Sort}
 \label{merge-sort}
 
 \SetKwFunction{mergeTwoArrays}{mergeTwoArrays}
@@ -160,7 +160,7 @@ Thuật toán sắp xếp trộn sử dụng phương pháp chia để trị (di
 \subsubsection{Độ phức tạp thuật toán}
 
 \begin{itemize}
-    \item Độ phức tạp thời gian \cite[p.~243--244]{weiss2013} \\
+    \item Độ phức tạp thời gian \\
     Mảng ban đầu có $n$ phần tử cần sắp xếp sẽ được chia đôi nhiều lần cho đến khi nó chỉ còn 1 phần tử, như vậy sẽ có $log_2{n}$ mức đệ quy. Ở mỗi mức đệ quy, ta duyệt qua các phần tử ở tất cả mảng con để thực hiện trộn nên độ phức tạp là $O\left(n\right)$. Như vậy độ phức tạp của thuật toán Merge Sort là $O\left(n\log{n}\right)$. Có thể thấy thuật toán không phụ thuộc vào phân bố ban đầu của dữ liệu, do đó ta có:
     \begin{itemize}[label=$\circ$]
         \item Trường hợp tốt nhất: $O\left(n\log{n}\right)$
