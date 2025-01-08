@@ -127,11 +127,166 @@ Từ đó dựa vào công thức phân lớp ở phần ý tưởng, ta xác đ
 	\node[draw, fill=yellow] at (14, -0.4) {8};
 	\node[draw, fill=white] at (15, -0.4) {2};
 	
-	\node[font=\rmfamily] at (0, -1.5) {{\bfseries Bước 4:} Phân hoạch các phần tử vào các phân vùng:};
+	\node[font=\rmfamily, text width=18cm] at (0, -2) {{\bfseries Bước 4:} Phân hoạch các phần tử vào các phân vùng. Ở giai đoạn này, ta sẽ sử dụng thêm mảng $L[0..m-1]$, trong đó $L[k]-1$ sẽ chỉ vào biên bên phải của phân vùng thứ $k$.};
+\end{tikzpicture}
+
+\begin{tikzpicture}[node distance=0cm, font=\sffamily, every node/.style={minimum width=1cm, minimum height=1cm, outer sep=0pt, anchor = west}, line join=miter, line cap=rect]
 	
+	% Swap lần 1
+	\node[font=\rmfamily] at (0, 0) {$\bullet$ Bắt đầu với $j=0$, $flash = a[j] = 10 \rightarrow$ Hoán vị $flash$ với $a[L[2] - 1]$ rồi giảm $L[2]$ đi 1 đơn vị.};
+	\node[draw, fill=white] at (3, -2) {10};
+	\node[draw, fill=white] at (4, -2) {3};
+	\node[draw, fill=white] at (5, -2) {1};
+	\node[draw, fill=white] at (6, -2) {7};
+	\node[draw, fill=white] at (7, -2) {0};
+	\node[draw, fill=white] at (8, -2) {8};
+	\node[draw, fill=yellow] at (9, -2) {2};
+	\node[draw, fill=yellow] at (11, -2) {$flash = 10$};
+	\node[draw, font=\rmfamily, scale = 0.8] at (7, -0.8) {$L[2]-1$};
+	\draw[->, >=stealth, line width=0.5mm, shorten <=0pt] (8.38, -0.8) -- (9.4, -1.5);
+	\draw[->, >=stealth, line width=0.5mm, shorten <=0pt] (9.6, -1) -- (9.6, -1.5);
+	\draw[->, >=stealth, line width=0.5mm, shorten <=0pt] (12, -1) -- (12, -1.5);
+	\draw[line width=0.5mm, shorten <=0pt] (9.6, -1) -- (12, -1);
+\end{tikzpicture}
+
+\begin{tikzpicture}[node distance=0cm, font=\sffamily, every node/.style={minimum width=1cm, minimum height=1cm, outer sep=0pt, anchor = west}, line join=miter, line cap=rect]
+	
+	% Swap lần 2
+	\node[font=\rmfamily] at (0, 0) {$\bullet$ Với $flash = 2 \rightarrow$ Hoán vị $flash$ với $a[L[0] - 1]$ rồi giảm $L[0]$ đi 1 đơn vị.};
+	\node[draw, fill=white] at (3, -2) {10};
+	\node[draw, fill=white] at (4, -2) {3};
+	\node[draw, fill=white] at (5, -2) {1};
+	\node[draw, fill=yellow] at (6, -2) {7};
+	\node[draw, fill=white] at (7, -2) {0};
+	\node[draw, fill=white] at (8, -2) {8};
+	\node[draw, fill=blue] at (9, -2) {10};
+	\node[draw, fill=yellow] at (11, -2) {$flash = 2$};
+	\node[draw, font=\rmfamily, scale = 0.8] at (4, -0.8) {$L[0]-1$};
+	\draw[->, >=stealth, line width=0.5mm, shorten <=0pt] (5.38, -0.8) -- (6.4, -1.5);
+	\draw[->, >=stealth, line width=0.5mm, shorten <=0pt] (6.6, -1) -- (6.6, -1.5);
+	\draw[->, >=stealth, line width=0.5mm, shorten <=0pt] (12, -1) -- (12, -1.5);
+	\draw[line width=0.5mm, shorten <=0pt] (6.6, -1) -- (12, -1);
+\end{tikzpicture}
+
+\vspace{0.8cm}
+
+\begin{tikzpicture}[node distance=0cm, font=\sffamily, every node/.style={minimum width=1cm, minimum height=1cm, outer sep=0pt, anchor = west}, line join=miter, line cap=rect]
+	
+	% Swap lần 3
+	\node[font=\rmfamily] at (0, 0) {$\bullet$ Với $flash = 7 \rightarrow$ Hoán vị $flash$ với $a[L[1] - 1]$ rồi giảm $L[1]$ đi 1 đơn vị.};
+	\node[draw, fill=white] at (3, -2) {10};
+	\node[draw, fill=white] at (4, -2) {3};
+	\node[draw, fill=white] at (5, -2) {1};
+	\node[draw, fill=blue] at (6, -2) {2};
+	\node[draw, fill=white] at (7, -2) {0};
+	\node[draw, fill=yellow] at (8, -2) {8};
+	\node[draw, fill=blue] at (9, -2) {10};
+	\node[draw, fill=yellow] at (11, -2) {$flash = 7$};
+	\node[draw, font=\rmfamily, scale = 0.8] at (6, -0.8) {$L[1]-1$};
+	\draw[->, >=stealth, line width=0.5mm, shorten <=0pt] (7.38, -0.8) -- (8.4, -1.5);
+	\draw[->, >=stealth, line width=0.5mm, shorten <=0pt] (8.6, -1) -- (8.6, -1.5);
+	\draw[->, >=stealth, line width=0.5mm, shorten <=0pt] (12, -1) -- (12, -1.5);
+	\draw[line width=0.5mm, shorten <=0pt] (8.6, -1) -- (12, -1);
+\end{tikzpicture}
+
+\vspace{0.8cm}
+
+\begin{tikzpicture}[node distance=0cm, font=\sffamily, every node/.style={minimum width=1cm, minimum height=1cm, outer sep=0pt, anchor = west}, line join=miter, line cap=rect]
+	
+	% Swap lần 4
+	\node[font=\rmfamily] at (0, 0) {$\bullet$ Với $flash = 8 \rightarrow$ Hoán vị $flash$ với $a[L[1] - 1]$ rồi giảm $L[1]$ đi 1 đơn vị.};
+	\node[draw, fill=white] at (3, -2) {10};
+	\node[draw, fill=white] at (4, -2) {3};
+	\node[draw, fill=white] at (5, -2) {1};
+	\node[draw, fill=blue] at (6, -2) {2};
+	\node[draw, fill=yellow] at (7, -2) {0};
+	\node[draw, fill=blue] at (8, -2) {7};
+	\node[draw, fill=blue] at (9, -2) {10};
+	\node[draw, fill=yellow] at (11, -2) {$flash = 8$};
+	\node[draw, font=\rmfamily, scale = 0.8] at (5, -0.8) {$L[1]-1$};
+	\draw[->, >=stealth, line width=0.5mm, shorten <=0pt] (6.38, -0.8) -- (7.4, -1.5);
+	\draw[->, >=stealth, line width=0.5mm, shorten <=0pt] (7.6, -1) -- (7.6, -1.5);
+	\draw[->, >=stealth, line width=0.5mm, shorten <=0pt] (12, -1) -- (12, -1.5);
+	\draw[line width=0.5mm, shorten <=0pt] (7.6, -1) -- (12, -1);
+\end{tikzpicture}
+
+\vspace{0.8cm}
+
+\begin{tikzpicture}[node distance=0cm, font=\sffamily, every node/.style={minimum width=1cm, minimum height=1cm, outer sep=0pt, anchor = west}, line join=miter, line cap=rect]
+	
+	% Swap lần 5
+	\node[font=\rmfamily] at (0, 0) {$\bullet$ Với $flash = 0 \rightarrow$ Hoán vị $flash$ với $a[L[0] - 1]$ rồi giảm $L[0]$ đi 1 đơn vị.};
+	\node[draw, fill=white] at (3, -2) {10};
+	\node[draw, fill=white] at (4, -2) {3};
+	\node[draw, fill=yellow] at (5, -2) {1};
+	\node[draw, fill=blue] at (6, -2) {2};
+	\node[draw, fill=blue] at (7, -2) {8};
+	\node[draw, fill=blue] at (8, -2) {7};
+	\node[draw, fill=blue] at (9, -2) {10};
+	\node[draw, fill=yellow] at (11, -2) {$flash = 0$};
+	\node[draw, font=\rmfamily, scale = 0.8] at (3, -0.8) {$L[0]-1$};
+	\draw[->, >=stealth, line width=0.5mm, shorten <=0pt] (4.38, -0.8) -- (5.4, -1.5);
+	\draw[->, >=stealth, line width=0.5mm, shorten <=0pt] (5.6, -1) -- (5.6, -1.5);
+	\draw[->, >=stealth, line width=0.5mm, shorten <=0pt] (12, -1) -- (12, -1.5);
+	\draw[line width=0.5mm, shorten <=0pt] (5.6, -1) -- (12, -1);
+\end{tikzpicture}
+
+\vspace{0.8cm}
+
+\begin{tikzpicture}[node distance=0cm, font=\sffamily, every node/.style={minimum width=1cm, minimum height=1cm, outer sep=0pt, anchor = west}, line join=miter, line cap=rect]
+	
+	% Swap lần 6
+	\node[font=\rmfamily] at (0, 0) {$\bullet$ Với $flash = 1 \rightarrow$ Hoán vị $flash$ với $a[L[0] - 1]$ rồi giảm $L[0]$ đi 1 đơn vị.};
+	\node[draw, fill=white] at (3, -2) {10};
+	\node[draw, fill=yellow] at (4, -2) {3};
+	\node[draw, fill=blue] at (5, -2) {0};
+	\node[draw, fill=blue] at (6, -2) {2};
+	\node[draw, fill=blue] at (7, -2) {8};
+	\node[draw, fill=blue] at (8, -2) {7};
+	\node[draw, fill=blue] at (9, -2) {10};
+	\node[draw, fill=yellow] at (11, -2) {$flash = 1$};
+	\node[draw, font=\rmfamily, scale = 0.8] at (2, -0.8) {$L[0]-1$};
+	\draw[->, >=stealth, line width=0.5mm, shorten <=0pt] (3.38, -0.8) -- (4.4, -1.5);
+	\draw[->, >=stealth, line width=0.5mm, shorten <=0pt] (4.6, -1) -- (4.6, -1.5);
+	\draw[->, >=stealth, line width=0.5mm, shorten <=0pt] (12, -1) -- (12, -1.5);
+	\draw[line width=0.5mm, shorten <=0pt] (4.6, -1) -- (12, -1);
 \end{tikzpicture}
 
 
+\vspace{0.8cm}
+
+\begin{tikzpicture}[node distance=0cm, font=\sffamily, every node/.style={minimum width=1cm, minimum height=1cm, outer sep=0pt, anchor = west}, line join=miter, line cap=rect]
+	
+	% Swap lần 7
+	\node[font=\rmfamily] at (0, 0) {$\bullet$ Với $flash = 3 \rightarrow$ Hoán vị $flash$ với $a[L[0] - 1]$ rồi giảm $L[0]$ đi 1 đơn vị.};
+	\node[draw, fill=yellow] at (3, -2) {10};
+	\node[draw, fill=blue] at (4, -2) {1};
+	\node[draw, fill=blue] at (5, -2) {0};
+	\node[draw, fill=blue] at (6, -2) {2};
+	\node[draw, fill=blue] at (7, -2) {8};
+	\node[draw, fill=blue] at (8, -2) {7};
+	\node[draw, fill=blue] at (9, -2) {10};
+	\node[draw, fill=yellow] at (11, -2) {$flash = 3$};
+	\node[draw, font=\rmfamily, scale = 0.8] at (1, -0.8) {$L[0]-1$};
+	\draw[->, >=stealth, line width=0.5mm, shorten <=0pt] (2.38, -0.8) -- (3.4, -1.5);
+	\draw[->, >=stealth, line width=0.5mm, shorten <=0pt] (3.6, -1) -- (3.6, -1.5);
+	\draw[->, >=stealth, line width=0.5mm, shorten <=0pt] (12, -1) -- (12, -1.5);
+	\draw[line width=0.5mm, shorten <=0pt] (3.6, -1) -- (12, -1);
+	
+	%Phân hoạch xong
+	% Swap lần 7
+	\node[font=\rmfamily] at (0, -3) {$\bullet$ Như vậy sau bước này, các phần tử đã được đưa về đúng phân vùng của nó.};
+	\node[draw, fill=blue] at (3, -4) {3};
+	\node[draw, fill=blue] at (4, -4) {1};
+	\node[draw, fill=blue] at (5, -4) {0};
+	\node[draw, fill=blue] at (6, -4) {2};
+	\node[draw, fill=blue] at (7, -4) {8};
+	\node[draw, fill=blue] at (8, -4) {7};
+	\node[draw, fill=blue] at (9, -4) {10};
+	
+	% Sắp xếp xong
+	\node[font=\rmfamily] at (0, -5.3) {{\bfseries Bước 5:} Cuối cùng, ở mỗi phân vùng, sử dụng Insertion Sort để đưa các phần tử về đúng vị trí.};
+\end{tikzpicture}
 
 \subsubsection{Độ phức tạp thuật toán}
 

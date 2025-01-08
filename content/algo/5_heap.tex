@@ -225,16 +225,16 @@
 \begin{itemize}
     \item Độ phức tạp thời gian
     \begin{itemize}[label=$\circ$]
-        \item Trường hợp tốt nhất: $O\left(n\log{n}\right)$ vì khi xây dựng heap 
-        và thực hiện thao tác heapify vẫn cần $O\left(n \log n\right)$ do tính 
+        \item Trường hợp tốt nhất: $O(n\log{n})$ vì khi xây dựng heap 
+        và thực hiện thao tác heapify vẫn cần $O(n \log n)$ do tính 
         chất của heap.
-        \item Trường hợp xấu nhất: $O\left(n\log{n}\right)$ trong trường hợp tệ 
+        \item Trường hợp xấu nhất: $O(n\log{n})$ trong trường hợp tệ 
         nhất (mảng hoàn toàn ngược hoặc có cấu trúc phức tạp) vẫn duy 
-        trì $O\left(n \log n\right)$ vì mọi thao tác chính đều dựa trên việc 
+        trì $O(n \log n)$ vì mọi thao tác chính đều dựa trên việc 
         heapify từng phần tử.
-        \item Trường hợp trung bình: $O\left(n\log{n}\right)$ trường hợp trung bình 
+        \item Trường hợp trung bình: $O(n\log{n})$ trường hợp trung bình 
         vẫn cần xây dựng heap và thực hiện $n-1$ lần thao tác Heapify.
     \end{itemize}
-    \item Độ phức tạp không gian: $O\left(1\right)$ vì Heap Sort là thuật toán 
+    \item Độ phức tạp không gian: $O(1)$ vì Heap Sort là thuật toán 
     sắp xếp tại chỗ (in-place), không sử dụng bộ nhớ phụ ngoài biến tạm.
 \end{itemize}
