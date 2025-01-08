@@ -12,20 +12,18 @@ mảng được sắp xếp.
 \subsubsection{Mã giả}
 
 \begin{algorithm}[H]
-\caption{Bubble Sort}
-\SetKwFunction{BubbleSort}{BubbleSort}
-\SetKwProg{Fn}{Function}{:}{}
-\Fn{\BubbleSort{a\KwSty{[]}, n}}{
-    \For{$i \gets 0$ \KwTo $n - 2$}{
-        \For{$j \gets 0$ \KwTo $n - i - 2$}{
-            // Nếu sai vị trí thì hoán vị \\
-            \If{$a[j] > a[j + 1]$}{
-                swap($a[j]$, $a[j + 1]$)
-            }
-        }
-    }
-}
-\textbf{end function}
+	\caption{Bubble Sort}
+	\SetKwFunction{BubbleSort}{BubbleSort}
+	\SetKwProg{Fn}{procedure}{:}{}
+	\Fn{\BubbleSort{a\KwSty{[ ]}, n}}{
+		\For{$i \gets 0$ \KwTo $n - 2$}{
+			\For{$j \gets 0$ \KwTo $n - i - 2$}{
+				\If{$a[j] > a[j + 1]$}{
+					swap($a[j]$, $a[j + 1]$) \tcp{Nếu sai vị trí thì hoán vị}
+				}
+			}
+		}
+	}
 \end{algorithm}
 
 \subsubsection{Ví dụ}

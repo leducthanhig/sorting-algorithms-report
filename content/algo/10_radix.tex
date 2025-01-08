@@ -7,43 +7,51 @@ Radix Sort sắp xếp các phần tử bằng cách xử lý từng chữ số 
 \subsubsection{Mã giả}
 
 \begin{algorithm}[H]
-\caption{Radix Sort}
-\label{radix-sort}
+    \caption{Radix Sort}
+    \label{radix-sort}
 
-\SetKwFunction{CountingSortByDigit}{CountingSortByDigit}
-\SetKwFunction{RadixSort}{RadixSort}
-\SetKwProg{Fn}{Function}{:}{}
-\Fn{\CountingSortByDigit {arr\KwSty{[ ]}, n, exp}}{
-    $count[10] \gets \{0\}$ \tcp{Mảng đếm cho 10 chữ số}
-    $output[n] \gets \{0\}$ \tcp{Mảng kết quả}
-    \For{$i \gets 0$ \KwTo $n-1$}{
-        $index = (arr[i] \hspace{0.2cm} / \hspace{0.2cm} exp) \% 10$ \\
-        $count[index]++$
+    \SetKwFunction{CountingSortByDigit}{CountingSortByDigit}
+    \SetKwProg{Fn}{procedure}{:}{}
+    \Fn{\CountingSortByDigit {a\KwSty{[ ]}, n, exp}}{
+        $count[10] \gets \{0\},\ output[n] \gets \{0\}$ \tcp{Khởi tạo mảng đếm và mảng kết quả}
+        \For{$i \gets 0$ \KwTo $n-1$}{
+            $index = (a[i]\ /\ exp)\ \%\ 10$ \\
+            $count[index]++$
+        }
+        \For{$i \gets 1$ \KwTo $9$}{
+            $count[i] += count[i-1]$
+        }
+        \For{$i \gets n-1$ \KwSty{downto} $0$}{
+            $index = (a[i]\ /\ exp)\ \%\ 10$ \\
+            $output[count[index] - 1] = a[i]$ \\
+            $count[index]--$
+        }
+        \For{$i \gets 0$ \KwTo $n-1$}{
+            $a[i] = output[i]$
+        }
     }
-    \For{$i \gets 1$ \KwTo $9$}{
-        $count[i] += count[i-1]$
-    }
-    \For{$i \gets n-1$ \KwSty{downto} $0$}{
-        $index = (arr[i] \hspace{0.2cm} / \hspace{0.2cm} exp) \% 10$ \\
-        $output[count[index] - 1] = arr[i]$ \\
-        $count[index]--$
-    }
-    \For{$i \gets 0$ \KwTo $n-1$}{
-        $arr[i] = output[i]$
-    }
-}
-\textbf{end function}
-
-\Fn{\RadixSort {arr\KwSty{[ ]}, n}}{
-    $maxVal \gets max(a,n)$ \tcp{Tìm giá trị lớn nhất để biết số chữ số}
-    $exp \gets 1$ \\
-    \While{$maxVal / exp > 0$}{
-        \CountingSortByDigit{arr, n, exp} \\
-        $exp \, *= \, 10$
-    }
-}
-\textbf{end function}
 \end{algorithm}
+
+\begingroup
+\renewcommand{\thealgocf}{} % Loại bỏ số thứ tự
+\setlength{\algotitleheightrule}{0pt} % Loại bỏ dòng kẻ trên tiêu đề
+\setlength{\interspacetitleruled}{0pt} % Không khoảng cách giữa tiêu đề và đường kẻ
+\setlength{\interspacealgoruled}{0pt} % Không khoảng cách giữa đường kẻ và nội dung
+
+\begin{algorithm}[H]
+	\setcounter{AlgoLine}{13} % Tiếp tục số dòng từ phần trước
+    \SetKwFunction{RadixSort}{RadixSort}
+    \SetKwProg{Fn}{procedure}{:}{}
+    \Fn{\RadixSort {a\KwSty{[ ]}, n}}{
+        $maxVal \gets max(a,n)$ \tcp{Tìm giá trị lớn nhất để biết số chữ số}
+        $exp \gets 1$ \\
+        \While{$maxVal / exp > 0$}{
+            \CountingSortByDigit{a, n, exp} \\
+            $exp\ *=\ 10$
+        }
+    }
+\end{algorithm}
+\endgroup
 
 \subsubsection{Ví dụ}
 

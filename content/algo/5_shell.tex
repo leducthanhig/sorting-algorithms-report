@@ -12,7 +12,7 @@ phần tử bằng nhau có thể bị đổi chỗ do hoán đổi các nhóm c
 \begin{enumerate}
     \item Thay vì sắp xếp toàn bộ danh sách một cách tuần tự, Shell Sort 
     chia danh sách thành các danh sách con với khoảng cách giữa các phần 
-    tử được xác định bởi một giá trị gọi là khoảng cách (interval).
+    tử được xác định bởi một giá trị gọi là khoảng.
     \item Thuật toán sử dụng sắp xếp chèn để sắp xếp các phần tử trong 
     từng danh sách con này.
     \item Sau mỗi vòng lặp, khoảng cách được thu nhỏ dần, cuối cùng trở 
@@ -22,30 +22,25 @@ phần tử bằng nhau có thể bị đổi chỗ do hoán đổi các nhóm c
 \subsubsection{Mã giả}
 
 \begin{algorithm}[H]
-\caption{Shell Sort}
-\SetKwFunction{ShellSort}{ShellSort}
-\SetKwProg{Fn}{Function}{:}{}
-\Fn{\ShellSort{a\KwSty{[]}, n}}{
-    // Bước 1: Khởi tạo khoảng cách \\
-    $gap \gets n / 2$ \\
-    \While{$gap > 0$}{
-        // Bước 2: Sắp xếp chèn với khoảng cách gap \\
-        \For{$i \gets gap$ \KwTo $n - 1$}{
-            $temp \gets a[i]$ \\
-            $j \gets i$ \\
-            // Dịch chuyển các phần tử lớn hơn temp lên một khoảng cách \\
-            \While{$j \geq gap$ \KwSty{and} $a[j - gap] > temp$}{
-                $a[j] \gets a[j - gap]$ \\
-                $j \gets j - gap$ \\
+    \caption{Shell Sort}
+    \SetKwFunction{ShellSort}{ShellSort}
+    \SetKwProg{Fn}{procedure}{:}{}
+    \Fn{\ShellSort{a\KwSty{[ ]}, n}}{
+        $gap \gets n / 2$ \tcp{Khởi tạo khoảng cách}
+        \While{$gap > 0$}{
+            \For{$i \gets gap$ \KwTo $n - 1$}{
+                $temp \gets a[i],\ j \gets i$ \\
+                
+                \tcp{Dịch chuyển các phần tử lớn hơn temp lên một khoảng}
+                \While{$j \geq gap$ \KwSty{and} $a[j - gap] > temp$}{
+                    $a[j] \gets a[j - gap]$ \\
+                    $j \gets j - gap$
+                }
+                $a[j] \gets temp$ \tcp{Đặt temp vào đúng vị trí}
             }
-            // Đặt temp vào đúng vị trí \\
-            $a[j] \gets temp$ \\
+            $gap \gets gap / 2$ \tcp{Giảm khoảng cách}
         }
-        // Bước 3: Giảm khoảng cách \\
-        $gap \gets gap / 2$ \\
     }
-}
-\textbf{end function}
 \end{algorithm}
 
 \subsubsection{Ví dụ}
@@ -143,26 +138,29 @@ Thực hiện tương tự với $gap = 1$, ta thu được mảng đã sắp x�
     hợp tất cả các giá trị mà gap nhận trong quá trình thực hiện thuật 
     toán). Cụ thể:
     \begin{itemize}[label=$\circ$]
-	\item Trường hợp tốt nhất: $O\left(n\log{n}\right)$, Khi mảng đầu vào 
-    đã được sắp xếp hoàn toàn hoặc gần như sắp xếp và sử dụng một chuỗi 
-    khoảng cách tối ưu (ví dụ: Knuth, Sedgewick,..). Vì khi mảng đã sắp 
-    xếp, mỗi bước sắp xếp với khoảng cách gap chỉ cần thực hiện rất ít 
-    phép so sánh và không cần hoán đổi. Còn chuỗi khoảng cách tối ưu đảm 
-    bảo các phần tử được phân phối đều và nhanh chóng đưa mảng về trạng 
-    thái sắp xếp hoàn chỉnh.
-	\item Trường hợp xấu nhất: $O\left(n^2\right)$. Khi mảng đầu vào được 
-    sắp xếp ngược và sử dụng chuỗi khoảng cách không tối ưu như $n,n/2,n/4,
-    \ldots,1$, (giống trong mã giả nói trên).Trong trường hợp này, các 
-    phần tử phải được di chuyển qua lại nhiều lần để đưa về đúng vị trí. 
-    Đặc biệt, khi $gap = 1$, Shell Sort trở thành Insertion Sort, dẫn đến 
-    hiệu suất tương tự là $O\left(n^2\right)$.
-    \item Trường hợp trung bình: $O\left(n^{3/2}\right)$. Khi mảng đầu vào 
-    có thứ tự ngẫu nhiên và sử dụng chuỗi khoảng cách phổ biến như $n,n/2,
-    n/4,\ldots,1$. Trong trường hợp này, các phần tử không được phân phối 
-    đều trong các lớp, dẫn đến việc cần thực hiện nhiều phép so sánh và 
-    hoán đổi hơn. Đồng thời, với chuỗi khoảng cách không tối ưu, nhưng vẫn 
-    đảm bảo hiệu suất tốt hơn so với Insertion Sort với độ phức tạp theo 
-    thời gian trung bình là $O\left(n^2\right)$.
+        \item Trường hợp tốt nhất: $O\left(n\log{n}\right)$, Khi mảng đầu vào 
+        đã được sắp xếp hoàn toàn hoặc gần như sắp xếp và sử dụng một chuỗi 
+        khoảng cách tối ưu (ví dụ: Knuth, Sedgewick,..). Vì khi mảng đã sắp 
+        xếp, mỗi bước sắp xếp với khoảng cách gap chỉ cần thực hiện rất ít 
+        phép so sánh và không cần hoán đổi. Còn chuỗi khoảng cách tối ưu đảm 
+        bảo các phần tử được phân phối đều và nhanh chóng đưa mảng về trạng 
+        thái sắp xếp hoàn chỉnh.
+
+        \pagebreak
+
+        \item Trường hợp xấu nhất: $O\left(n^2\right)$. Khi mảng đầu vào được 
+        sắp xếp ngược và sử dụng chuỗi khoảng cách không tối ưu như $n,n/2,n/4,
+        \ldots,1$, (giống trong mã giả nói trên). Trong trường hợp này, các 
+        phần tử phải được di chuyển qua lại nhiều lần để đưa về đúng vị trí. 
+        Đặc biệt, khi $gap = 1$, Shell Sort trở thành Insertion Sort, dẫn đến 
+        hiệu suất tương tự là $O\left(n^2\right)$.
+        \item Trường hợp trung bình: $O\left(n^{3/2}\right)$. Khi mảng đầu vào 
+        có thứ tự ngẫu nhiên và sử dụng chuỗi khoảng cách phổ biến như $n,n/2,
+        n/4,\ldots,1$. Trong trường hợp này, các phần tử không được phân phối 
+        đều trong các lớp, dẫn đến việc cần thực hiện nhiều phép so sánh và 
+        hoán đổi hơn. Đồng thời, với chuỗi khoảng cách không tối ưu, nhưng vẫn 
+        đảm bảo hiệu suất tốt hơn so với Insertion Sort với độ phức tạp theo 
+        thời gian trung bình là $O\left(n^2\right)$.
     \end{itemize}
     Lưu ý: Chuỗi khoảng cách là tập hợp tất cả các giá trị mà $gap$ nhận 
     trong quá trình thực hiện thuật toán.

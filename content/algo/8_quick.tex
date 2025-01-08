@@ -7,36 +7,37 @@
 \subsubsection{Mã giả}
 
 \begin{algorithm}[H]
-\caption{Quick Sort}
-\label{quick-sort}
+	\caption{Quick Sort}
+	\label{quick-sort}
 
-\SetKwFunction{QuickSort}{QuickSort}
-\SetKwProg{Fn}{Function}{:}{}
-\Fn{\QuickSort {arr\KwSty{[ ]}, left, right}}{
-    $i \gets left, \hspace{0.2cm} j \gets right$ \\
-    $pivot = arr[left + (right - left) / 2]$ \\
-    // Phân hoạch thành 2 đoạn \\
-    \While{$i \leq j$}{ 
-        \While{$arr[i] < pivot$}{
-            $++i$ \\
-        }
-        \While{$arr[j] > pivot$}{
-            $--j$ \\
-        }
-        \If{$i \leq j$}{
-            swap($arr[i]$, $arr[j]$) \\
-            $++i, \hspace{0.2cm} --j$ \\ 
-        }
-    }
-    // Gọi đệ quy cho 2 mảng con \\
-    \If{$i < right$}{
-        \QuickSort{arr, i, right} \\
-    }
-    \If{$j > left$}{
-        \QuickSort{arr, left, j}
-    }
-}
-\textbf{end function}
+	\SetKwFunction{QuickSort}{QuickSort}
+	\SetKwProg{Fn}{procedure}{:}{}
+	\Fn{\QuickSort {a\KwSty{[ ]}, left, right}}{
+		$i \gets left$ \\
+		$j \gets right$ \\
+		$pivot = a[left + (right - left) / 2]$ \\
+		\tcp{Phân hoạch thành 2 đoạn}
+		\While{$i \leq j$}{ 
+			\While{$a[i] < pivot$}{
+				$++i$
+			}
+			\While{$a[j] > pivot$}{
+				$--j$
+			}
+			\If{$i \leq j$}{
+				swap($a[i]$, $a[j]$) \\
+				$++i$ \\
+				$--j$ 
+			}
+		}
+		\tcp{Gọi đệ quy cho 2 mảng con}
+		\If{$i < right$}{
+			\QuickSort{a, i, right}
+		}
+		\If{$j > left$}{
+			\QuickSort{a, left, j}
+		}
+	}
 \end{algorithm}
 
 \subsubsection{Ví dụ}
@@ -113,6 +114,13 @@
 	\node[draw, fill=blue] at (7.3, -14) {8};
 	
 	\node[font=\rmfamily] at (0, -15.5) {Thực hiện tương tự đối với các mảng con, ta thu được mảng đã sắp xếp.};
+	\node[draw, fill=blue] at (1, -16.5) {0};
+	\node[draw, fill=blue] at (2, -16.5) {1};
+	\node[draw, fill=blue] at (3, -16.5) {2};
+	\node[draw, fill=blue] at (4, -16.5) {3};
+	\node[draw, fill=blue] at (5, -16.5) {7};
+	\node[draw, fill=blue] at (6, -16.5) {8};
+	\node[draw, fill=blue] at (7, -16.5) {10};
 \end{tikzpicture}
 
 \subsubsection{Độ phức tạp}
@@ -122,6 +130,8 @@
     \begin{itemize}[label=$\circ$]
         \item Trường hợp tốt nhất: Giá trị pivot được chọn luôn là trung vị của dãy, do đó nó phân hoạch dãy thành 2 phần bằng nhau. Vì ở mỗi lần chia, kích thước mảng giảm đi một nửa nên khi đó sẽ có $log_2{n}$ mức đệ quy. Ở mỗi mức, thuật toán phải thao tác trên toàn bộ mảng nên có độ phức tạp là $O\left(n\right)$. Như vậy, tổng hợp độ phức tạp trong trường hợp này là $O\left(n\log{n}\right)$.
         
+		\pagebreak
+
         \item Trường hợp xấu nhất: Giá trị pivot được chọn luôn là phần tử nhỏ nhất hoặc lớn nhất của dãy, do đó sau mỗi lần phân hoạch, một đoạn không có phần tử nào và đoạn còn lại có $n - 1$ phần tử. Khi đó, thuật toán phải thực hiện  $n - 1$ mức đệ quy, mỗi mức xử lý toàn bộ mảng còn lại với độ phức tạp $O\left(n\right)$. Như vậy, tổng hợp độ phức tạp trong trường hợp này là $O\left(n^2\right)$.
         
         \item Trường hợp trung bình: $O\left(n\log{n}\right)$ 

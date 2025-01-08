@@ -30,26 +30,27 @@ bị thay đổi do hoán vị.
 \subsubsection{Mã giả}
 
 \begin{algorithm}[H]
-\caption{Selection Sort}
-\SetKwFunction{SelectionSort}{SelectionSort}
-\SetKwProg{Fn}{Function}{:}{}
-\Fn{\SelectionSort{a\KwSty{[]}, n}}{
-    \For{$i \gets 0$ \KwTo $n-2$}{
-        // Bước 1: Giả định phần tử nhỏ nhất là a[i] \\
-        $minIndex \gets i$ \\
-        // Bước 2: Tìm phần tử nhỏ nhất trong phần chưa sắp xếp \\
-        \For{$j \gets i+1$ \KwTo $n-1$}{
-            \If{$a[j] < a[minIndex]$}{
-                $minIndex \gets j$ \\
+    \caption{Selection Sort}
+    \SetKwFunction{SelectionSort}{SelectionSort}
+    \SetKwProg{Fn}{procedure}{:}{}
+    \Fn{\SelectionSort{a\KwSty{[ ]}, n}}{
+        \For{$i \gets 0$ \KwTo $n-2$}{
+            \tcp{Bước 1: Giả định phần tử nhỏ nhất là a[i]}
+            $minIndex \gets i$ 
+            
+            \tcp{Bước 2: Tìm phần tử nhỏ nhất trong phần chưa sắp xếp}
+            \For{$j \gets i+1$ \KwTo $n-1$}{ 
+                \If{$a[j] < a[minIndex]$}{
+                    $minIndex \gets j$
+                }
+            }
+            
+            \tcp{Bước 3: Hoán đổi phần tử nhỏ nhất với a[i]}
+            \If{$minIndex \neq i$}{ 
+                swap($a[i]$, $a[minIndex]$)
             }
         }
-        // Bước 3: Hoán đổi phần tử nhỏ nhất với a[i] \\
-        \If{$minIndex \neq i$}{
-            swap($a[i]$, $a[minIndex]$) \\
-        }
     }
-}
-\textbf{end function}
 \end{algorithm}
 
 \subsubsection{Ví dụ}

@@ -7,46 +7,44 @@ Thuật toán sắp xếp trộn sử dụng phương pháp chia để trị (di
 \subsubsection{Mã giả}
 
 \begin{algorithm}[H]
-\caption{Merge Sort}
-\label{merge-sort}
+	\caption{Merge Sort}
+	\label{merge-sort}
 
-\SetKwFunction{mergeTwoArrays}{mergeTwoArrays}
-\SetKwProg{Fn}{Function}{:}{}
-\Fn{\mergeTwoArrays {arr\KwSty{[ ]}, arr1\KwSty{[ ]}, n1, arr2\KwSty{[ ]}, n2}}{
-    $i \gets 0, \hspace{0.2cm} j \gets 0$ \\
-    \While{$i < n1$ \KwSty{and} $j < n2$}{
-        \If{$arr1[i] < arr2[j]$}{ 
-            Thêm $arr1[i]$ vào $arr$ \\
-            $++i$ \\
-        }
-        \Else{
-            Thêm $arr2[j]$ vào $arr$ \\
-            $++j$ \\
-        }
-    }
-    \While{$i < n1$}{
-        Thêm $arr1[i]$ vào $arr$ \\
-        $++i$ \\
-    }
-    \While{$j < n2$}{
-        Thêm $arr2[j]$ vào $arr$ \\
-        $++j$ \\
-    }
-}
-\textbf{end function}
+	\SetKwFunction{mergeTwoArrays}{mergeTwoArrays}
+	\SetKwProg{Fn}{procedure}{:}{}
+	\Fn{\mergeTwoArrays{a\KwSty{[ ]}, a1\KwSty{[ ]}, n1, a2\KwSty{[ ]}, n2}}{
+		$i \gets 0, \hspace{0.2cm} j \gets 0$ \\
+		\While{$i < n1$ \KwSty{and} $j < n2$}{
+			\If{$a1[i] < a2[j]$}{ 
+				Thêm $a1[i]$ vào $a$ \\
+				$++i$ \\
+			}
+			\Else{
+				Thêm $a2[j]$ vào $a$ \\
+				$++j$ \\
+			}
+		}
+		\While{$i < n1$}{
+			Thêm $a1[i]$ vào $a$ \\
+			$++i$ \\
+		}
+		\While{$j < n2$}{
+			Thêm $a2[j]$ vào $a$ \\
+			$++j$ \\
+		}
+	}
 
-\SetKwFunction{MergeSort}{MergeSort}
-\SetKwProg{Fn}{Function}{:}{}
-\Fn{\MergeSort {arr\KwSty{[ ]}, left, right}}{
-    \If{$left < right$}{ 
-        Tạo mảng $a1 = arr[left..mid]$ có $n1$ phần tử \\
-        Tạo mảng $a2 = arr[mid+1..right]$ có $n2$ phần tử \\
-        \MergeSort{arr, left, mid} \\
-        \MergeSort{arr, mid + 1, right} \\
-        \mergeTwoArrays{arr, a1, n1, a2, n2}
-    }
-}
-\textbf{end function}
+	\SetKwFunction{MergeSort}{MergeSort}
+	\SetKwProg{Fn}{procedure}{:}{}
+	\Fn{\MergeSort {a\KwSty{[ ]}, left, right}}{
+		\If{$left < right$}{ 
+			Tạo mảng $a1 = a[left..mid]$ có $n1$ phần tử \\
+			Tạo mảng $a2 = a[mid+1..right]$ có $n2$ phần tử \\
+			\MergeSort{a, left, mid} \\
+			\MergeSort{a, mid + 1, right} \\
+			\mergeTwoArrays{a, a1, n1, a2, n2}
+		}
+	}
 \end{algorithm}
 
 \subsubsection{Ví dụ}
