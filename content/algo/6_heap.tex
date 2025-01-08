@@ -18,41 +18,36 @@
 \subsubsection{Mã giả}
 
 \begin{algorithm}[H]
-\caption{Heap Sort \cite{code-heap}}
-\SetKwFunction{Heapify}{heapify}
-\SetKwFunction{HeapSort}{HeapSort}
-\SetKwProg{Fn}{Function}{:}{}
-\Fn{\Heapify{a\KwSty{[]}, n, i}}{
-    $largest \gets i$ \\
-    $left \gets 2 * i + 1$ \\
-    $right \gets 2 * i + 2$ \\
-    \If{$left < n$ \KwSty{and} $a[left] > a[largest]$}{
-        $largest \gets left$ \\
-    }
-    \If{$right < n$ \KwSty{and} $a[right] > a[largest]$}{
-        $largest \gets right$ \\
-    }
-    \If{$largest \neq i$}{
-        // Đổi chỗ root với phần tử lớn nhất \\
-        swap($a[i]$, $a[largest]$) \\
-        // Đệ quy heapify trên node bị ảnh hưởng \\
-        \Heapify{a, n, largest} \\
-    }
-}
-\textbf{end function}
+	\caption{Heap Sort \cite{code-heap}}
+	\SetKwFunction{Heapify}{heapify}
+	\SetKwFunction{HeapSort}{HeapSort}
+	\SetKwProg{Fn}{procedure}{:}{}
+	\Fn{\Heapify{a\KwSty{[ ]}, n, i}}{
+		$largest \gets i$ \\
+		$left \gets 2 * i + 1,\ right \gets 2 * i + 2$ \\
+		\If{$left < n$ \KwSty{and} $a[left] > a[largest]$}{
+			$largest \gets left$ \\
+		}
+		\If{$right < n$ \KwSty{and} $a[right] > a[largest]$}{
+			$largest \gets right$ \\
+		}
+		\If{$largest \neq i$}{
+			swap($a[i]$, $a[largest]$) \tcp{Đổi chỗ root với phần tử lớn nhất}
+			\Heapify{a, n, largest} \tcp{Đệ quy heapify trên node bị ảnh hưởng}
+		}
+	}
 
-\Fn{\HeapSort{a\KwSty{[]}, n}}{
-    // Bước 1: Xây dựng Max-Heap từ node trong cuối cùng \\
-    \For{$i \gets \lfloor n / 2 \rfloor - 1$ \KwSty{downto} $0$}{
-        \Heapify{a, n, i} \\
-    }
-    // Bước 2: Sắp xếp mảng bằng cách trích xuất các phần tử lớn nhất \\
-    \For{$i \gets n - 1$ \KwSty{downto} $1$}{
-        swap($a[0]$, $a[i]$) \\
-        \Heapify{a, i, 0} \\
-    }
-}
-\textbf{end function}
+	\Fn{\HeapSort{a\KwSty{[ ]}, n}}{
+		% \tcp{Bước 1: Xây dựng Max-Heap từ node trong cuối cùng}
+		\For{$i \gets \lfloor n / 2 \rfloor - 1$ \KwSty{downto} $0$}{
+			\Heapify{a, n, i} \\
+		}
+		% \tcp{Bước 2: Sắp xếp mảng bằng cách trích xuất các phần tử lớn nhất}
+		\For{$i \gets n - 1$ \KwSty{downto} $1$}{
+			swap($a[0]$, $a[i]$) \\
+			\Heapify{a, i, 0} \\
+		}
+	}
 \end{algorithm}
 
 \subsubsection{Ví dụ}
