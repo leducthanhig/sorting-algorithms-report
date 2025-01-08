@@ -11,28 +11,26 @@ Shaker Sort là một biến thể của Bubble Sort, trong đó việc duyệt 
 	\label{shaker-sort}
 	
 	\SetKwFunction{ShakerSort}{ShakerSort}
-	\SetKwFunction{Shaker Sort}{Shaker Sort}
-	\SetKwProg{Fn}{Function}{:}{}
-	\Fn{\ShakerSort {arr\KwSty{[ ]}, n}}{
+	\SetKwProg{Fn}{procedure}{:}{}
+	\Fn{\ShakerSort{a\KwSty{[ ]}, n}}{
 		$left \gets 0$ \\
-		$right \gets n - 1$  \\
+		$ right \gets n - 1$ \\
 		
 		\While{$left < right$}{
 			\For{$i = left$ \KwTo $right - 1$}{
-				\If{$arr[i] > arr[i+1]$}{
-					swap($arr[i]$, $arr[i+1]$)
+				\If{$a[i] > a[i+1]$}{
+					swap($a[i]$, $a[i+1]$)
 				}
 			}
 			$right--$ \\
 			\For{$i = right - 1$ \KwSty{downto} $left$}{
-				\If{$arr[i] > arr[i+1]$}{
-					swap($arr[i]$, $arr[i+1]$)
+				\If{$a[i] > a[i+1]$}{
+					swap($a[i]$, $a[i+1]$)
 				}
 			}
 			$left++$
 		}
 	}
-	\textbf{end function}
 \end{algorithm}
 
 \subsubsection{Ví dụ}
