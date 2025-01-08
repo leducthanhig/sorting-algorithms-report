@@ -2,12 +2,12 @@
 
 \subsubsection{Ý tưởng}
 
-Để sắp xếp một đoạn trong mảng, nếu đoạn đó có ít hơn 2 phần tử thì không cần phải làm gì cả. Ngược lại, nếu đoạn đó có từ 2 phần tử trở lên, ta chọn một phần tử ở chính giữa làm “chốt” (pivot), sau đó phân hoạch thành 2 đoạn nhỏ hơn sao cho các phần tử ở đoạn bên trái không lớn hơn pivot và các phần tử ở đoạn bên phải không nhỏ hơn pivot. Tiếp theo, ta áp dụng phương pháp tương tự cho 2 mảng con đó bằng cách gọi đệ quy đến từng mảng. \cite[p.~93--94]{hoang2008}
+Để sắp xếp một đoạn trong mảng, nếu đoạn đó có ít hơn 2 phần tử thì không cần phải làm gì cả. Ngược lại, nếu đoạn đó có từ 2 phần tử trở lên, ta chọn một phần tử ở chính giữa làm “chốt” (pivot), sau đó phân hoạch thành 2 đoạn nhỏ hơn sao cho các phần tử ở đoạn bên trái không lớn hơn pivot và các phần tử ở đoạn bên phải không nhỏ hơn pivot. Tiếp theo, ta áp dụng phương pháp tương tự cho 2 mảng con đó bằng cách gọi đệ quy đến từng mảng. \cite{idea-quick} \cite[p.~93--94]{hoang2008}
 
 \subsubsection{Mã giả}
 
 \begin{algorithm}[H]
-\caption{Quick Sort \cite{code-quick}}
+\caption{Quick Sort \cite[p.~183--184]{cormen2022} \cite{code-quick}}
 \label{quick-sort}
 
 \SetKwFunction{QuickSort}{QuickSort}

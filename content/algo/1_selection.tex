@@ -8,7 +8,7 @@ chính xác. Đây là một thuật toán không ổn định (unstable)
 vì nếu các phần tử có giá trị bằng nhau, thứ tự ban đầu có thể 
 bị thay đổi do hoán vị.
 
-\subsubsection{Ý tưởng} 
+\subsubsection{Ý tưởng \textnormal{\cite[p.~237]{cormen2022}}} 
 
 \begin{enumerate}
     \item Chia danh sách thành hai phần:
@@ -25,14 +25,13 @@ bị thay đổi do hoán vị.
     \item Sau mỗi lần hoán đổi, mở rộng phần đã sắp xếp thêm 
     một phần tử.
     \item Tiếp tục cho đến khi toàn bộ danh sách được sắp xếp.
-    \cite{code-selection}
 \end{enumerate}
 
 
 \subsubsection{Mã giả}
 
 \begin{algorithm}[H]
-\caption{Selection Sort \cite{code-selection}}
+\caption{Selection Sort \cite[p.~237]{cormen2022}}
 \SetKwFunction{SelectionSort}{SelectionSort}
 \SetKwProg{Fn}{Function}{:}{}
 \Fn{\SelectionSort{a\KwSty{[ ]}, n}}{
@@ -130,7 +129,7 @@ không có sự thay đổi và cuối cùng ta được mảng đã sắp xếp
     \end{tikzpicture}
 \end{center}
 
-\subsubsection{Độ phức tạp thuật toán \textnormal{\cite{code-selection}}}
+\subsubsection{Độ phức tạp thuật toán \textnormal{ \cite[p.~237]{cormen2022}}}
 
 \begin{itemize}
     \item Độ phức tạp thời gian

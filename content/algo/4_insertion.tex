@@ -10,7 +10,7 @@ phần chưa sắp xếp. Với mỗi phần tử trong mảng chưa sắp xếp
 \subsubsection{Mã giả}
 
 \begin{algorithm}[H]
-\caption{Insertion Sort \cite{code-insertion}}
+\caption{Insertion Sort \cite[p.~19]{cormen2022} \cite{code-insertion}}
 \SetKwFunction{InsertionSort}{InsertionSort}
 \SetKwProg{Fn}{Function}{:}{}
 \Fn{\InsertionSort{a\KwSty{[]}, n}}{
@@ -187,7 +187,7 @@ phần chưa sắp xếp. Với mỗi phần tử trong mảng chưa sắp xếp
         vào thì có thể dùng binary search trong mảng đã sắp xếp trước 
         đó $\left(\left[1,4,5,10,15,20\right]\right)$ để tìm vị trí thích hợp.
     \end{itemize}
-    \item Library Sort (còn gọi là gapped insertion sort)
+    \item Library Sort (còn gọi là gapped insertion sort) \cite{improve-insertion}
     \begin{itemize}
         \item Ý tưởng: Thuật toán này có thể sử dụng các khoảng trống 
         (gaps) trong mảng để chèn phần tử, giúp hạn chế việc dịch 

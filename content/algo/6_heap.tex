@@ -1,6 +1,6 @@
 \subsection{Heap Sort}
 
-\subsubsection{Ý tưởng}
+\subsubsection{Ý tưởng \textnormal{\cite{idea-heap} \cite[p.~170]{cormen2022}}}
 
 \begin{itemize}
     \item Xây dựng Max-Heap: Chuyển đổi mảng đầu vào thành một Max-Heap, 
@@ -11,14 +11,14 @@
         của mảng.
         \item Giảm kích thước của heap đi 1 và gọi hàm Heapify để 
         duy trì tính chất Max-Heap.
-        \item Lặp lại quá trình này cho đến khi heap chỉ còn một phần tử. \cite[p.~170]{cormen2022}
+        \item Lặp lại quá trình này cho đến khi heap chỉ còn một phần tử. 
     \end{enumerate}
 \end{itemize}
 
 \subsubsection{Mã giả}
 
 \begin{algorithm}[H]
-\caption{Heap Sort \cite{code-heap}}
+\caption{Heap Sort \cite[p.~165,167,170]{cormen2022} \cite{code-heap}}
 \SetKwFunction{Heapify}{heapify}
 \SetKwFunction{HeapSort}{HeapSort}
 \SetKwProg{Fn}{Function}{:}{}

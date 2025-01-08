@@ -7,7 +7,7 @@ nhau trước khi thu hẹp khoảng cách lại. Điều này giúp giảm thi�
 hoán đổi và dịch chuyển các phần tử. Đây là một thuật toán không ổn định, 
 phần tử bằng nhau có thể bị đổi chỗ do hoán đổi các nhóm cách xa nhau.
 
-\subsubsection{Ý tưởng}
+\subsubsection{Ý tưởng \textnormal{\cite{idea-shell}}}
 
 \begin{enumerate}
     \item Thay vì sắp xếp toàn bộ danh sách một cách tuần tự, Shell Sort 
@@ -16,13 +16,13 @@ phần tử bằng nhau có thể bị đổi chỗ do hoán đổi các nhóm c
     \item Thuật toán sử dụng sắp xếp chèn để sắp xếp các phần tử trong 
     từng danh sách con này.
     \item Sau mỗi vòng lặp, khoảng cách được thu nhỏ dần, cuối cùng trở 
-    về 1, lúc này danh sách được sắp xếp hoàn chỉnh. \cite{code-shell}
+    về 1, lúc này danh sách được sắp xếp hoàn chỉnh. 
 \end{enumerate}
 
 \subsubsection{Mã giả}
 
 \begin{algorithm}[H]
-\caption{Shell Sort \cite{code-shell}}
+\caption{Shell Sort \cite{idea-shell} \cite{code-shell}}
 \SetKwFunction{ShellSort}{ShellSort}
 \SetKwProg{Fn}{Function}{:}{}
 \Fn{\ShellSort{a\KwSty{[]}, n}}{
@@ -137,7 +137,7 @@ Thực hiện tương tự với $gap = 1$, ta thu được mảng đã sắp x�
 \subsubsection{Độ phức tạp thuật toán}
 
 \begin{itemize}
-    \item Độ phức tạp thời gian\\
+    \item Độ phức tạp thời gian \cite[p.~83--91]{knuth1998}\\
     Hiệu suất của thuật toán Shell Sort phụ thuộc rất nhiều vào chuỗi 
     khoảng cách và thứ tự của mảng đầu vào (với chuỗi khoảng cách là tập 
     hợp tất cả các giá trị mà gap nhận trong quá trình thực hiện thuật 

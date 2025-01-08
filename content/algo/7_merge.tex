@@ -2,12 +2,12 @@
 
 \subsubsection{Ý tưởng}
 
-Thuật toán sắp xếp trộn sử dụng phương pháp chia để trị (divide-and-conquer). Đầu tiên, chia mảng $a[1..n]$ thành 2 mảng con có kích thước $n/2$ là $a[1..mid]$ và $a[mid + 1..n]$, sắp xếp và trộn hai mảng này lại, ta thu được mảng $n/2$ phần tử đã được sắp xếp. Để sắp xếp mảng $n/2$ phần tử ta lại tiếp tục chia thành hai mảng có $n/4$ phần tử, cứ như vậy gọi đệ quy cho đến khi mảng chỉ có 1 phần tử thì xem như là đã được sắp xếp. \cite[p.~241]{weiss2013}
+Thuật toán sắp xếp trộn sử dụng phương pháp chia để trị (divide-and-conquer). Đầu tiên, chia mảng $a[1..n]$ thành 2 mảng con có kích thước $n/2$ là $a[1..mid]$ và $a[mid + 1..n]$, sắp xếp và trộn hai mảng này lại, ta thu được mảng $n/2$ phần tử đã được sắp xếp. Để sắp xếp mảng $n/2$ phần tử ta lại tiếp tục chia thành hai mảng có $n/4$ phần tử, cứ như vậy gọi đệ quy cho đến khi mảng chỉ có 1 phần tử thì xem như là đã được sắp xếp. \cite{idea-merge} \cite[p.~241]{weiss2013}
 
 \subsubsection{Mã giả}
 
 \begin{algorithm}[H]
-\caption{Merge Sort \cite{code-merge}}
+\caption{Merge Sort \cite{idea-merge} \cite{code-merge}}
 \label{merge-sort}
 
 \SetKwFunction{mergeTwoArrays}{mergeTwoArrays}
