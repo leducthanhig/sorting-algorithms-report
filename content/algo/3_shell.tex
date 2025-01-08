@@ -137,21 +137,32 @@ Thực hiện tương tự với $gap = 1$, ta thu được mảng đã sắp x�
 \subsubsection{Độ phức tạp thuật toán}
 
 \begin{itemize}
-    \item Độ phức tạp thời gian
+    \item Độ phức tạp thời gian\\
+    Hiệu suất của thuật toán Shell Sort phụ thuộc rất nhiều vào chuỗi 
+    khoảng cách và thứ tự của mảng đầu vào (với chuỗi khoảng cách là tập 
+    hợp tất cả các giá trị mà gap nhận trong quá trình thực hiện thuật 
+    toán). Cụ thể:
     \begin{itemize}[label=$\circ$]
-        \item Trường hợp tốt nhất: $O\left(n\log{n}\right)$, khi dữ liệu 
-        gần như đã được sắp xếp hoàn chỉnh. Với mảng gần như đã được sắp 
-        xếp hoàn chỉnh, mỗi lần chèn trong các bước của Insertion Sort sẽ 
-        tốn rất ít thời gian. Số lần duyệt qua mảng giảm đáng kể nhờ khoảng 
-        cách lớn ban đầu.
-        \item Trường hợp xấu nhất: $O\left(n^2\right)$, khi mảng đầu vào 
-        có thứ tự ngẫu nhiên. Trong trường hợp chuỗi khoảng cách không 
-        hiệu quả, các phần tử không được sắp xếp tốt ở các bước đầu, dẫn 
-        đến hiệu suất kém ở bước cuối cùng (khi khoảng cách là 1).
-        \item Trường hợp trung bình: $O\left(n^{3/2}\right)$, khi mảng đầu 
-        vào có thứ tự ngẫu nhiên. Với chuỗi khoảng cách hợp lý, Shell Sort 
-        giảm đáng kể số lần hoán đổi so với Insertion Sort, nhưng vẫn phụ 
-        thuộc vào thứ tự ban đầu của mảng.
+	\item Trường hợp tốt nhất: $O\left(n\log{n}\right)$, Khi mảng đầu vào 
+    đã được sắp xếp hoàn toàn hoặc gần như sắp xếp và sử dụng một chuỗi 
+    khoảng cách tối ưu (ví dụ: Knuth, Sedgewick,..). Vì khi mảng đã sắp 
+    xếp, mỗi bước sắp xếp với khoảng cách gap chỉ cần thực hiện rất ít 
+    phép so sánh và không cần hoán đổi. Còn chuỗi khoảng cách tối ưu đảm 
+    bảo các phần tử được phân phối đều và nhanh chóng đưa mảng về trạng 
+    thái sắp xếp hoàn chỉnh.
+	\item Trường hợp xấu nhất: $O\left(n^2\right)$. Khi mảng đầu vào được 
+    sắp xếp ngược và sử dụng chuỗi khoảng cách không tối ưu như $n,n/2,n/4,
+    \ldots,1$, (giống trong mã giả nói trên).Trong trường hợp này, các 
+    phần tử phải được di chuyển qua lại nhiều lần để đưa về đúng vị trí. 
+    Đặc biệt, khi $gap = 1$, Shell Sort trở thành Insertion Sort, dẫn đến 
+    hiệu suất tương tự là $O\left(n^2\right)$.
+    \item Trường hợp trung bình: $O\left(n^{3/2}\right)$. Khi mảng đầu vào 
+    có thứ tự ngẫu nhiên và sử dụng chuỗi khoảng cách phổ biến như $n,n/2,
+    n/4,\ldots,1$. Trong trường hợp này, các phần tử không được phân phối 
+    đều trong các lớp, dẫn đến việc cần thực hiện nhiều phép so sánh và 
+    hoán đổi hơn. Đồng thời, với chuỗi khoảng cách không tối ưu, nhưng vẫn 
+    đảm bảo hiệu suất tốt hơn so với Insertion Sort với độ phức tạp theo 
+    thời gian trung bình là $O\left(n^2\right)$.
     \end{itemize}
     Lưu ý: Chuỗi khoảng cách là tập hợp tất cả các giá trị mà $gap$ nhận 
     trong quá trình thực hiện thuật toán.
