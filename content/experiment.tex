@@ -1247,56 +1247,65 @@ $\blacktriangleright$ \textbf{Kết luận:}
 \\\\
 Dựa trên các kết quả thực nghiệm, hiệu suất của các thuật toán sắp xếp 
 thay đổi đáng kể tùy thuộc vào kiểu thứ tự mảng đầu vào và kích thước 
-mảng. Radix Sort và Counting Sort là những thuật toán nhanh nhất trong 
-các trường hợp dữ liệu phù hợp, với độ phức tạp trung bình và tốt nhất 
-lần lượt là $O\left(d\times\left(n+k\right)\right)$ và $O\left(n+k\right)$. 
-Chúng hoạt động hiệu quả trên 
-các mảng lớn có giá trị nguyên và phạm vi giá trị nhỏ hoặc cố định. Tuy 
-nhiên, khi $k$ (phạm vi giá trị) hoặc $d$ (số chữ số lớn nhất) tăng, 
-hiệu suất của chúng có thể bị ảnh hưởng. Ngược lại, Flash Sort đạt được 
-hiệu suất $O\left(n\right)$ trong trường hợp tốt nhất và trung bình, vượt trội trên 
-các mảng có kích thước lớn và giá trị phân bố đều (và là số nguyên).  
+mảng. \textbf{Counting Sort} và \textbf{Radix Sort} là những thuật toán nhanh nhất 
+trong các trường hợp dữ liệu phù hợp, với độ phức tạp trung bình và tốt nhất 
+lần lượt là $O\left(n+k\right)$ và $O\left(d\times\left(n+k\right)\right)$. 
+Chúng hoạt động hiệu quả trên các mảng lớn có giá trị nguyên và phạm vi 
+giá trị nhỏ hoặc cố định. Tuy nhiên, khi $k$ (phạm vi giá trị) hoặc $d$ 
+(số chữ số lớn nhất) tăng, hiệu suất của chúng có thể bị ảnh hưởng. 
+Ngược lại, \textbf{Flash Sort} đạt được hiệu suất $O\left(n\right)$ trong 
+trường hợp tốt nhất và trung bình, vượt trội trên các mảng có kích thước 
+lớn và giá trị phân bố đều (và là số nguyên).
 \\\\
-Xét nhóm thuật toán có độ phức tạp trung bình là $O\left(n\log{n}\right)$ thì ta có 
-thể thấy hiệu suất ổn định với mọi kiểu dữ liệu đầu vào (ngẫu nhiên, đảo 
-ngược, ...) của Merge Sort và Heap Sort. Trong khi đó, Quick Sort vượt 
-trội với thời gian ngắn nhất do chọn $pivot$ hợp lí (khi chọn $pivot$ tệ 
-sẽ khiến độ phức tạp của Quick Sort lên đến $O\left(n^2\right)$). 
+Xét nhóm thuật toán có độ phức tạp trung bình là $O\left(n\log{n}\right)$ 
+thì ta có thể thấy hiệu suất ổn định với mọi kiểu dữ liệu đầu vào (ngẫu 
+nhiên, đảo ngược, ...) của \textbf{Heap Sort} và \textbf{Merge Sort}. Trong khi đó, 
+\textbf{Quick Sort} vượt trội với thời gian ngắn nhất do chọn $pivot$ hợp 
+lí (khi chọn $pivot$ tệ sẽ khiến độ phức tạp của Quick Sort lên đến 
+$O\left(n^2\right)$).
 \\\\
-Nhóm thuật toán đơn giản nhất (độ phức tạp $O\left(n^2\right)$) chi phí thực thi 
-khá thấp với số lượng phần tử nhỏ $(n < 10,000)$. Với kiểu dữ liệu gần 
-như đã sắp xếp hay đã sắp xếp thì Shaker Sort và Insertion Sort đã vượt 
-trội hẳn với các thuật toán còn lại trong nhóm này với độ phức tạp $O\left(n\right)$ 
-(trường hợp tốt nhất của 2 thuật toán này). Còn với những thuật toán còn 
-lại như Selection Sort và Bubble Sort luôn chạy với độ phức tạp là $O\left(n^2\right)$ 
-với mọi trường hợp, Shell Sort có thể cải thiện thời gian thực thi nếu 
-chọn gap tốt (lúc này độ phức tạp sẽ là $O\left(n\log{n}\right)$).
+Nhóm thuật toán đơn giản nhất (độ phức tạp thời gian $O\left(n^2\right)$) 
+chi phí thực thi khá thấp với số lượng phần tử nhỏ $(n < 10,000)$. Với 
+kiểu dữ liệu gần như được sắp xếp hay đã sắp xếp thì \textbf{Shaker Sort} và 
+\textbf{Insertion Sort} đã vượt trội hẳn với các thuật toán còn lại trong 
+nhóm này với độ phức tạp $O\left(n\right)$ (trường hợp tốt nhất của 2 
+thuật toán này). Còn với những thuật toán còn lại như \textbf{Selection Sort} 
+và \textbf{Bubble Sort} luôn chạy với độ phức tạp là $O\left(n^2\right)$ 
+trong mọi trường hợp, \textbf{Shell Sort} có thể cải thiện thời gian thực 
+thi nếu chọn $gap$ tốt (lúc này độ phức tạp sẽ là $O\left(n\log{n}\right)$).
 \\\\
 Kích thước mảng cũng ảnh hưởng lớn đến hiệu suất của các thuật toán. Với 
-các mảng nhỏ (dưới 10,000 phần tử), các thuật toán đơn giản như Insertion 
-Sort, Shell Sort, Bubble Sort,  Selection Sort và Shaker Sort hoạt động 
-tốt nhờ chi phí thấp và khả năng tối ưu hóa trên mảng nhỏ. Với mảng trung 
-bình (10,000 đến 100,000 phần tử), các thuật toán $O\left(n\log{n}\right)$ như Quick 
-Sort, Heap Sort và Merge Sort bắt đầu thể hiện ưu thế. Đối với mảng lớn 
-(trên 100,000 phần tử), Radix Sort, Counting Sort, và Flash Sort là lựa 
-chọn hàng đầu nếu dữ liệu đầu vào phù hợp. 
+các mảng nhỏ (dưới 10,000 phần tử), các thuật toán đơn giản như 
+\textbf{Selection Sort}, \textbf{Bubble Sort}, \textbf{Shaker Sort}, 
+\textbf{Insertion Sort} và \textbf{Shell Sort} hoạt động tốt nhờ chi phí 
+thấp và khả năng tối ưu hóa trên mảng nhỏ. Với mảng trung bình (10,000 đến 
+100,000 phần tử), các thuật toán có độ phức tạp thời gian là 
+$O\left(n\log{n}\right)$ như \textbf{Quick Sort}, \textbf{Heap Sort} và 
+\textbf{Merge Sort} bắt đầu thể hiện ưu thế. Đối với mảng lớn (trên 
+100,000 phần tử), \textbf{Counting Sort}, \textbf{Radix Sort} và 
+\textbf{Flash Sort} là những sự lựa chọn hàng đầu nếu dữ liệu đầu vào 
+phù hợp như đã nói ở trên.
 
 \pagebreak
 
 Tính ổn định của thuật toán cũng là một yếu tố quan trọng trong một số 
-bài toán. Bubble Sort, Insertion Sort, Merge Sort, Counting Sort, Radix 
-Sort, Shaker Sort là các thuật toán ổn định, giữ nguyên thứ tự của các 
-phần tử bằng nhau trong mảng đầu vào. Điều này rất hữu ích trong các bài 
-toán yêu cầu sắp xếp theo nhiều tiêu chí. Ngược lại, Selection Sort, Quick 
-Sort, Heap Sort, Shell Sort, Flash Sort không đảm bảo tính ổn định, do 
-cách hoán đổi các phần tử. 
+bài toán. \textbf{Bubble Sort}, \textbf{Shaker Sort}, \textbf{Insertion 
+Sort}, \textbf{Merge Sort}, \textbf{Counting Sort} và \textbf{Radix Sort} 
+là các thuật toán ổn định, giữ nguyên thứ tự của các phần tử bằng nhau 
+trong mảng đầu vào. Điều này rất hữu ích trong các bài toán yêu cầu sắp 
+xếp theo nhiều tiêu chí. Ngược lại, \textbf{Selection Sort}, \textbf{Shell 
+Sort}, \textbf{Heap Sort}, \textbf{Quick Sort} và \textbf{Flash Sort} 
+không đảm bảo tính ổn định, do cách hoán đổi các phần tử. 
 \\\\
-Tóm lại, Radix Sort, Counting Sort và Flash Sort vượt trội về tốc độ 
-trong các trường hợp phù hợp, trong khi Merge Sort, Heap Sort và Quick 
-Sort là những thuật toán toàn diện và ổn định về hiệu suất trên nhiều 
-loại thứ tự mảng cũng như kích thước mảng đầu vào. Insertion Sort và 
-Shaker Sort là lựa chọn tốt cho các mảng nhỏ hoặc đã được sắp xếp hoặc 
-gần như được sắp xếp hoàn chỉnh. Các thuật toán như Bubble Sort, Selection 
-Sort hay Shell Sort tuy dễ triển khai nhưng không hiệu quả với mảng lớn. 
-Kết quả thực nghiệm giúp làm rõ sự khác biệt giữa các thuật toán và cung cấp 
-cái nhìn sâu sắc về cách chọn thuật toán phù hợp cho từng bài toán cụ thể. 
+Tóm lại, \textbf{Counting Sort}, \textbf{Radix Sort} và \textbf{Flash Sort} 
+vượt trội về tốc độ trong các trường hợp phù hợp, trong khi \textbf{Counting 
+Sort}, \textbf{Radix Sort} và \textbf{Flash Sort} là những thuật toán toàn 
+diện và ổn định về hiệu suất trên nhiều loại thứ tự mảng cũng như kích 
+thước mảng đầu vào. \textbf{Shaker Sort} và \textbf{Insertion Sort} là lựa 
+chọn tốt cho các mảng nhỏ hoặc đã được sắp xếp hoặc gần như được sắp xếp 
+hoàn chỉnh. Các thuật toán như \textbf{Selection Sort}, \textbf{Bubble Sort} 
+hay \textbf{Shell Sort} tuy dễ triển khai nhưng không hiệu quả với mảng lớn. 
+Những nhận xét tổng quát cho toàn bộ dựa trên các kiểu thứ tự và kích thước 
+mảng đầu vào nói trên đã giúp làm rõ sự khác biệt giữa các thuật toán và 
+cung cấp cái nhìn sâu sắc về cách chọn thuật toán phù hợp cho từng bài toán 
+cụ thể.
