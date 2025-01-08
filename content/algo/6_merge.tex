@@ -161,12 +161,12 @@ Thuật toán sắp xếp trộn sử dụng phương pháp chia để trị (di
 
 \begin{itemize}
     \item Độ phức tạp thời gian \\
-    Mảng ban đầu có $n$ phần tử cần sắp xếp sẽ được chia đôi nhiều lần cho đến khi nó chỉ còn 1 phần tử, như vậy sẽ có $log_2{n}$ mức đệ quy. Ở mỗi mức đệ quy, ta duyệt qua các phần tử ở tất cả mảng con để thực hiện trộn nên độ phức tạp là $O(n)$. Như vậy độ phức tạp của thuật toán Merge Sort là $O(nlogn)$. Có thể thấy thuật toán không phụ thuộc vào phân bố ban đầu của dữ liệu, do đó ta có:
+    Mảng ban đầu có $n$ phần tử cần sắp xếp sẽ được chia đôi nhiều lần cho đến khi nó chỉ còn 1 phần tử, như vậy sẽ có $log_2{n}$ mức đệ quy. Ở mỗi mức đệ quy, ta duyệt qua các phần tử ở tất cả mảng con để thực hiện trộn nên độ phức tạp là $O\left(n\right)$. Như vậy độ phức tạp của thuật toán Merge Sort là $O\left(n\log{n}\right)$. Có thể thấy thuật toán không phụ thuộc vào phân bố ban đầu của dữ liệu, do đó ta có:
     \begin{itemize}[label=$\circ$]
-        \item Trường hợp tốt nhất: $O(nlogn)$
-        \item Trường hợp xấu nhất: $O(nlogn)$
-        \item Trường hợp trung bình: $O(nlogn)$ 
+        \item Trường hợp tốt nhất: $O\left(n\log{n}\right)$
+        \item Trường hợp xấu nhất: $O\left(n\log{n}\right)$
+        \item Trường hợp trung bình: $O\left(n\log{n}\right)$ 
     \end{itemize}
     
-    \item Độ phức tạp không gian: $O(n)$, vì thuật toán cần tạo thêm không gian để chứa những phần tử từ 2 mảng con rồi mới trộn vào mảng ban đầu.
+    \item Độ phức tạp không gian: $O\left(n\right)$, vì thuật toán cần tạo thêm không gian để chứa những phần tử từ 2 mảng con rồi mới trộn vào mảng ban đầu.
 \end{itemize}

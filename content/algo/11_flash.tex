@@ -2,7 +2,7 @@
 
 \subsubsection{Ý tưởng}
 
-Dựa trên phân phối, khai thác sự phân phối tự nhiên của dữ liệu đầu vào để đạt được độ phức tạp thời gian tuyến tính $O(n)$ cho dữ liệu phân phối đồng đều. Bao gồm 3 phần chính: phân loại, hoán vị và chèn trực tiếp.
+Dựa trên phân phối, khai thác sự phân phối tự nhiên của dữ liệu đầu vào để đạt được độ phức tạp thời gian tuyến tính $O\left(n\right)$ cho dữ liệu phân phối đồng đều. Bao gồm 3 phần chính: phân loại, hoán vị và chèn trực tiếp.
 
 \begin{itemize}
 	\item Phân loại
@@ -138,27 +138,27 @@ Từ đó dựa vào công thức phân lớp ở phần ý tưởng, ta xác đ
 \begin{itemize}
 	\item Độ phức tạp thời gian
 	\begin{itemize}[label=$\circ$]
-		\item Trường hợp tốt nhất: $O(n)$. Khi mảng đầu vào có các phần tử 
+		\item Trường hợp tốt nhất: $O\left(n\right)$. Khi mảng đầu vào có các phần tử 
 		phân bố đều, và số lượng lớp được chọn hợp lý. Trong trường hợp 
 		này, các phần tử được phân phối đều giữa các lớp, giảm tối đa số 
 		lần hoán đổi. Việc sắp xếp trong mỗi lớp bằng Insertion Sort được 
 		thực hiện nhanh chóng do số phần tử trong mỗi lớp nhỏ. Tất cả các 
 		bước chính (phân loại, hoán vị và chèn trực tiếp) đều có độ phức 
-		tạp là $O(n)$.
-		\item Trường hợp xấu nhất: $O(n^2)$. Khi các phần tử trong mảng phân 
+		tạp là $O\left(n\right)$.
+		\item Trường hợp xấu nhất: $O\left(n^2\right)$. Khi các phần tử trong mảng phân 
 		phối không đều hoặc số lượng lớp được chọn không hợp lý. Khi đó, một 
 		số lớp có thể chứa nhiều phần tử, dẫn đến việc sắp xếp trong lớp trở 
-		thành $O(k^2)$, với $k$ là số phần tử trong lớp lớn nhất. Nếu số lượng 
+		thành $O\left(k^2\right)$, với $k$ là số phần tử trong lớp lớn nhất. Nếu số lượng 
 		lớp quá nhỏ, thuật toán mất lợi thế phân chia và gần như phải sắp xếp 
 		toàn bộ mảng trong một lớp lớn.
-		\item Trường hợp trung bình: $O(n)$. Trong trường hợp này, các phần 
+		\item Trường hợp trung bình: $O\left(n\right)$. Trong trường hợp này, các phần 
 		tử được phân phối đủ đều giữa các lớp và việc sắp xếp trong lớp 
 		diễn ra hiệu quả. Thuật toán duy trì độ phức tạp tuyến tính trong 
 		cả ba bước (phân loại, hoán vị và chèn trực tiếp).
 	\end{itemize}
 	
-	\item Độ phức tạp không gian: $O(n)$. Flash Sort yêu cầu không gian 
+	\item Độ phức tạp không gian: $O\left(n\right)$. Flash Sort yêu cầu không gian 
 	phụ để lưu mảng lớp, với kích thước bằng số lượng lớp $(m)$. Trong 
 	trường hợp điển hình, $m \approx n/2$, dẫn đến độ phức tạp không gian 
-	là $O(n)$.
+	là $O\left(n\right)$.
 \end{itemize}
