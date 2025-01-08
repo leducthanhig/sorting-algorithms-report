@@ -5,26 +5,28 @@
 \subsubsection{Ý tưởng}
 
 Thuật toán này chia mảng thành hai phần: phần đã sắp xếp và 
-phần chưa sắp xếp. Với mỗi phần tử trong mảng chưa sắp xếp, thuật toán chèn nó vào vị trí thích hợp trong phần đã sắp xếp.
+phần chưa sắp xếp. Với mỗi phần tử trong mảng chưa sắp xếp, thuật toán chèn nó vào vị trí thích hợp trong phần đã sắp xếp. \cite[p.~90]{hoang2008}
 
 \subsubsection{Mã giả}
 
 \begin{algorithm}[H]
-	\caption{Insertion Sort}
-	\SetKwFunction{InsertionSort}{InsertionSort}
-	\SetKwProg{Fn}{procedure}{:}{}
-	\Fn{\InsertionSort{a\KwSty{[ ]}, n}}{
-		\For{$i \gets 1$ \KwTo $n - 1$}{
-			$key \gets a[i]$ \\
-			$j \gets i - 1$ \\
-			\tcp{Di chuyển phần tử lớn hơn sang phải}
-			\While{$j \geq 0$ \KwSty{and} $a[j] > key$}{
-				$a[j + 1] \gets a[j]$ \\
-				$j \gets j - 1$ \\
-			}
-			$a[j + 1] \gets key$ \tcp{Chèn key vào đúng vị trí}
-		}
-	}
+\caption{Insertion Sort \cite{code-insertion}}
+\SetKwFunction{InsertionSort}{InsertionSort}
+\SetKwProg{Fn}{Function}{:}{}
+\Fn{\InsertionSort{a\KwSty{[]}, n}}{
+    \For{$i \gets 1$ \KwTo $n - 1$}{
+        $key \gets a[i]$ \\
+        $j \gets i - 1$ \\
+        \While{$j \geq 0$ \KwSty{and} $a[j] > key$}{
+            // Di chuyển phần tử lớn hơn sang phải \\
+            $a[j + 1] \gets a[j]$ \\
+            $j \gets j - 1$ \\
+        }
+        // Chèn key vào đúng vị trí \\
+        $a[j + 1] \gets key$
+    }
+}
+\textbf{end function}
 \end{algorithm}
 
 \subsubsection{Ví dụ}
@@ -154,7 +156,7 @@ phần chưa sắp xếp. Với mỗi phần tử trong mảng chưa sắp xếp
 \subsubsection{Độ phức tạp thuật toán}
 
 \begin{itemize}
-    \item Độ phức tạp thời gian
+    \item Độ phức tạp thời gian \cite[p.~91]{hoang2008}
     \begin{itemize}[label=$\circ$]
         \item Trường hợp tốt nhất: $O\left(n\right)$ khi mảng đã được sắp xếp.
         \item Trường hợp xấu nhất: $O\left(n^2\right)$ khi mảng sắp xếp 
@@ -177,7 +179,7 @@ phần chưa sắp xếp. Với mỗi phần tử trong mảng chưa sắp xếp
         toán làm việc được trên mảng đã sắp xếp để có thể tối ưu việc 
         tìm vị trí phù hợp để chèn. Đó chính là Binary Search để có 
         thể tìm kiếm tốt hơn với độ phức tạp của thuật toán là 
-        $O\left(\log{n}\right)$.
+        $O\left(\log{n}\right)$. \cite[p.~91]{hoang2008}
         \item Ví dụ: Trong mảng $A=\left[1,4,5,10,15,20,9,21\right]$. 
         Khi xét vị trí $i=7$, ta cần tìm vị trí phụ hợp để chèn 9 
         vào thì có thể dùng binary search trong mảng đã sắp xếp trước 

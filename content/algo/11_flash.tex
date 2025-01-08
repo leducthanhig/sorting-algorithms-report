@@ -2,7 +2,7 @@
 
 \subsubsection{Ý tưởng}
 
-Dựa trên phân phối, khai thác sự phân phối tự nhiên của dữ liệu đầu vào để đạt được độ phức tạp thời gian tuyến tính $O\left(n\right)$ cho dữ liệu phân phối đồng đều. Bao gồm 3 phần chính: phân loại, hoán vị và chèn trực tiếp.
+Dựa trên phân phối, khai thác sự phân phối tự nhiên của dữ liệu đầu vào để đạt được độ phức tạp thời gian tuyến tính $O\left(n\right)$ cho dữ liệu phân phối đồng đều. Bao gồm 3 phần chính: phân loại, hoán vị và chèn trực tiếp. \cite{code-flash}
 
 \begin{itemize}
 	\item Phân loại
@@ -26,7 +26,7 @@ Dựa trên phân phối, khai thác sự phân phối tự nhiên của dữ li
 \subsubsection{Mã giả}
 
 \begin{algorithm}[H]
-	\caption{Flash Sort}
+	\caption{Flash Sort \cite{code-flash}}
 	\label{flash-sort}
 	
 	\SetKwFunction{FlashSort}{FlashSort}
@@ -280,10 +280,10 @@ Từ đó dựa vào công thức phân lớp ở phần ý tưởng, ta xác đ
 	\node[draw, fill=blue] at (9, -6.3) {10};
 \end{tikzpicture}
 
-\subsubsection{Độ phức tạp thuật toán}
+\subsubsection{Độ phức tạp thuật toán \textnormal{\cite{code-flash}}}
 
 \begin{itemize}
-	\item Độ phức tạp thời gian
+	\item Độ phức tạp thời gian 
 	\begin{itemize}[label=$\circ$]
 		\item Trường hợp tốt nhất: $O\left(n\right)$. Khi mảng đầu vào có các phần tử 
 		phân bố đều, và số lượng lớp được chọn hợp lý. Trong trường hợp 

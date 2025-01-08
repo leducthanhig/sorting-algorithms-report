@@ -2,12 +2,12 @@
 
 \subsubsection{Ý tưởng}
 
-Counting Sort không so sánh các phần tử mà dựa trên việc đếm số lần xuất hiện của từng giá trị. Thuật toán tạo một mảng đếm (counting array) để lưu số lần xuất hiện của các giá trị và sử dụng mảng này để xây dựng mảng đã sắp xếp. 
+Counting Sort không so sánh các phần tử mà dựa trên việc đếm số lần xuất hiện của từng giá trị. Thuật toán tạo một mảng đếm (counting array) để lưu số lần xuất hiện của các giá trị và sử dụng mảng này để xây dựng mảng đã sắp xếp. \cite[p.~102]{hoang2008}
 
 \subsubsection{Mã giả}
 
 \begin{algorithm}[H]
-    \caption{Counting Sort}
+    \caption{Counting Sort \cite{code-couting}}
     \label{counting-sort}
     
     \SetKwFunction{CountingSort}{CountingSort}
@@ -150,7 +150,7 @@ tại vị trí vừa truy cập. Khi đó ta được mảng đã sắp xếp:
 Với $k$ là giá trị lớn nhất trong mảng trừ giá trị nhỏ nhất cộng thêm 1. Ta có:
 
 \begin{itemize}
-	\item Độ phức tạp thời gian
+	\item Độ phức tạp thời gian \cite[p.~209]{cormen2022}
 	\begin{itemize}[label=$\circ$]
 		\item Trường hợp tốt nhất: $O\left(n+k\right)$. Khi khi $k$ nhỏ 
 		(các giá trị trong mảng nằm trong một khoảng hẹp), Counting Sort 

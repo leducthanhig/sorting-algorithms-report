@@ -2,13 +2,13 @@
 
 \subsubsection{Ý tưởng}
 
-Radix Sort sắp xếp các phần tử bằng cách xử lý từng chữ số của các số từ hàng thấp nhất (hàng đơn vị) đến hàng cao nhất. Thuật toán này sử dụng Counting Sort như một bước phụ trợ để sắp xếp theo từng chữ số.
+Radix Sort sắp xếp các phần tử bằng cách xử lý từng chữ số của các số từ hàng thấp nhất (hàng đơn vị) đến hàng cao nhất. Thuật toán này sử dụng Counting Sort như một bước phụ trợ để sắp xếp theo từng chữ số. \cite[p.~106--107]{hoang2008}
 
 \subsubsection{Mã giả}
 
 \begin{algorithm}[H]
-    \caption{Radix Sort}
-    \label{radix-sort}
+\caption{Radix Sort \cite{code-radix}}
+\label{radix-sort}
 
     \SetKwFunction{CountingSortByDigit}{CountingSortByDigit}
     \SetKwProg{Fn}{procedure}{:}{}
@@ -84,14 +84,14 @@ Giả sử ta có mảng ban đầu với $n=7$ như sau:
         
         \draw[->, line width=0.6mm] (8.75, 0) -- (10.25, 0);
         
-        \node[draw, fill=white] at (11, 0) {17\textcolor{green}{0}};
-        \node[draw, fill=white] at (12, 0) {09\textcolor{green}{0}};
-        \node[draw, fill=white] at (13, 0) {80\textcolor{green}{2}};
-        \node[draw, fill=white] at (14, 0) {00\textcolor{green}{2}};
-        \node[draw, fill=white] at (15, 0) {02\textcolor{green}{4}};
-        \node[draw, fill=white] at (16, 0) {04\textcolor{green}{5}};
-        \node[draw, fill=white] at (17, 0) {07\textcolor{green}{5}};
-        \node[draw, fill=white] at (18, 0) {06\textcolor{green}{6}};
+        \node[draw, fill=white] at (11, 0) {17\textcolor{cyan}{0}};
+        \node[draw, fill=white] at (12, 0) {09\textcolor{cyan}{0}};
+        \node[draw, fill=white] at (13, 0) {80\textcolor{cyan}{2}};
+        \node[draw, fill=white] at (14, 0) {00\textcolor{cyan}{2}};
+        \node[draw, fill=white] at (15, 0) {02\textcolor{cyan}{4}};
+        \node[draw, fill=white] at (16, 0) {04\textcolor{cyan}{5}};
+        \node[draw, fill=white] at (17, 0) {07\textcolor{cyan}{5}};
+        \node[draw, fill=white] at (18, 0) {06\textcolor{cyan}{6}};
     \end{tikzpicture}
 \end{center}
 
@@ -110,14 +110,14 @@ Giả sử ta có mảng ban đầu với $n=7$ như sau:
         
         \draw[->, line width=0.6mm] (8.75, 0) -- (10.25, 0);
         
-        \node[draw, fill=white] at (11, 0) {8\textcolor{green}{0}2};
-        \node[draw, fill=white] at (12, 0) {0\textcolor{green}{0}2};
-        \node[draw, fill=white] at (13, 0) {0\textcolor{green}{2}4};
-        \node[draw, fill=white] at (14, 0) {0\textcolor{green}{4}5};
-        \node[draw, fill=white] at (15, 0) {0\textcolor{green}{6}6};
-        \node[draw, fill=white] at (16, 0) {1\textcolor{green}{7}0};
-        \node[draw, fill=white] at (17, 0) {0\textcolor{green}{7}5};
-        \node[draw, fill=white] at (18, 0) {0\textcolor{green}{9}0};
+        \node[draw, fill=white] at (11, 0) {8\textcolor{cyan}{0}2};
+        \node[draw, fill=white] at (12, 0) {0\textcolor{cyan}{0}2};
+        \node[draw, fill=white] at (13, 0) {0\textcolor{cyan}{2}4};
+        \node[draw, fill=white] at (14, 0) {0\textcolor{cyan}{4}5};
+        \node[draw, fill=white] at (15, 0) {0\textcolor{cyan}{6}6};
+        \node[draw, fill=white] at (16, 0) {1\textcolor{cyan}{7}0};
+        \node[draw, fill=white] at (17, 0) {0\textcolor{cyan}{7}5};
+        \node[draw, fill=white] at (18, 0) {0\textcolor{cyan}{9}0};
     \end{tikzpicture}
 \end{center}
 
@@ -150,7 +150,7 @@ Giả sử ta có mảng ban đầu với $n=7$ như sau:
 \subsubsection{Độ phức tạp thuật toán}
 
 \begin{itemize}
-    \item Độ phức tạp thời gian
+    \item Độ phức tạp thời gian \cite[p.~213]{cormen2022}
     \begin{itemize}[label=$\circ$]
         \item Trường hợp tốt nhất: $O\left(d\times\left(n+k\right)\right)$. 
         Khi $n$ lớn và $k$ nhỏ. 

@@ -8,7 +8,7 @@ chính xác. Đây là một thuật toán không ổn định (unstable)
 vì nếu các phần tử có giá trị bằng nhau, thứ tự ban đầu có thể 
 bị thay đổi do hoán vị.
 
-\subsubsection{Ý tưởng}
+\subsubsection{Ý tưởng} 
 
 \begin{enumerate}
     \item Chia danh sách thành hai phần:
@@ -25,24 +25,24 @@ bị thay đổi do hoán vị.
     \item Sau mỗi lần hoán đổi, mở rộng phần đã sắp xếp thêm 
     một phần tử.
     \item Tiếp tục cho đến khi toàn bộ danh sách được sắp xếp.
+    \cite{code-selection}
 \end{enumerate}
+
 
 \subsubsection{Mã giả}
 
 \begin{algorithm}[H]
-    \caption{Selection Sort}
-    \SetKwFunction{SelectionSort}{SelectionSort}
-    \SetKwProg{Fn}{procedure}{:}{}
-    \Fn{\SelectionSort{a\KwSty{[ ]}, n}}{
-        \For{$i \gets 0$ \KwTo $n-2$}{
-            \tcp{Bước 1: Giả định phần tử nhỏ nhất là a[i]}
-            $minIndex \gets i$ 
-            
-            \tcp{Bước 2: Tìm phần tử nhỏ nhất trong phần chưa sắp xếp}
-            \For{$j \gets i+1$ \KwTo $n-1$}{ 
-                \If{$a[j] < a[minIndex]$}{
-                    $minIndex \gets j$
-                }
+\caption{Selection Sort \cite{code-selection}}
+\SetKwFunction{SelectionSort}{SelectionSort}
+\SetKwProg{Fn}{Function}{:}{}
+\Fn{\SelectionSort{a\KwSty{[]}, n}}{
+    \For{$i \gets 0$ \KwTo $n-2$}{
+        // Bước 1: Giả định phần tử nhỏ nhất là a[i] \\
+        $minIndex \gets i$ \\
+        // Bước 2: Tìm phần tử nhỏ nhất trong phần chưa sắp xếp \\
+        \For{$j \gets i+1$ \KwTo $n-1$}{
+            \If{$a[j] < a[minIndex]$}{
+                $minIndex \gets j$ \\
             }
             
             \tcp{Bước 3: Hoán đổi phần tử nhỏ nhất với a[i]}
@@ -129,7 +129,7 @@ không có sự thay đổi và cuối cùng ta được mảng đã sắp xếp
     \end{tikzpicture}
 \end{center}
 
-\subsubsection{Độ phức tạp thuật toán}
+\subsubsection{Độ phức tạp thuật toán \textnormal{\cite{code-selection}}}
 
 \begin{itemize}
     \item Độ phức tạp thời gian

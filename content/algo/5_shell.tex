@@ -16,27 +16,27 @@ phần tử bằng nhau có thể bị đổi chỗ do hoán đổi các nhóm c
     \item Thuật toán sử dụng sắp xếp chèn để sắp xếp các phần tử trong 
     từng danh sách con này.
     \item Sau mỗi vòng lặp, khoảng cách được thu nhỏ dần, cuối cùng trở 
-    về 1, lúc này danh sách được sắp xếp hoàn chỉnh.
+    về 1, lúc này danh sách được sắp xếp hoàn chỉnh. \cite{code-shell}
 \end{enumerate}
 
 \subsubsection{Mã giả}
 
 \begin{algorithm}[H]
-    \caption{Shell Sort}
-    \SetKwFunction{ShellSort}{ShellSort}
-    \SetKwProg{Fn}{procedure}{:}{}
-    \Fn{\ShellSort{a\KwSty{[ ]}, n}}{
-        $gap \gets n / 2$ \tcp{Khởi tạo khoảng cách}
-        \While{$gap > 0$}{
-            \For{$i \gets gap$ \KwTo $n - 1$}{
-                $temp \gets a[i],\ j \gets i$ \\
-                
-                \tcp{Dịch chuyển các phần tử lớn hơn temp lên một khoảng}
-                \While{$j \geq gap$ \KwSty{and} $a[j - gap] > temp$}{
-                    $a[j] \gets a[j - gap]$ \\
-                    $j \gets j - gap$
-                }
-                $a[j] \gets temp$ \tcp{Đặt temp vào đúng vị trí}
+\caption{Shell Sort \cite{code-shell}}
+\SetKwFunction{ShellSort}{ShellSort}
+\SetKwProg{Fn}{Function}{:}{}
+\Fn{\ShellSort{a\KwSty{[]}, n}}{
+    // Bước 1: Khởi tạo khoảng cách \\
+    $gap \gets n / 2$ \\
+    \While{$gap > 0$}{
+        // Bước 2: Sắp xếp chèn với khoảng cách gap \\
+        \For{$i \gets gap$ \KwTo $n - 1$}{
+            $temp \gets a[i]$ \\
+            $j \gets i$ \\
+            // Dịch chuyển các phần tử lớn hơn temp lên một khoảng cách \\
+            \While{$j \geq gap$ \KwSty{and} $a[j - gap] > temp$}{
+                $a[j] \gets a[j - gap]$ \\
+                $j \gets j - gap$ \\
             }
             $gap \gets gap / 2$ \tcp{Giảm khoảng cách}
         }
